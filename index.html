@@ -1,21 +1,263 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>nikikalek</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PochodniaMC - Doładowanie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050a14;
+            --card-bg: #0a1221;
+            --accent-blue: #1e90ff;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --border-color: rgba(30, 144, 255, 0.1);
+            --nav-bg: rgba(5, 10, 20, 0.8);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 80px; /* Miejsce na fixed top bar */
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .top-bar-container {
+            width: 90%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- RESZTA STRONY --- */
+        header {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-dim);
+        }
+
+        .tipply-section {
+            width: 90%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #0d1b33 0%, #0a1221 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-blue);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 60px;
+        }
+
+        .btn-tipply {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+
+        .btn-tipply:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1100px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 20px 15px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: border 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .card h3 {
+            text-transform: uppercase;
+            font-weight: 900;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .icon {
+            font-size: 3rem; /* Zmniejszyłem z 6rem, żeby było bardziej estetyczne */
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer {
+            width: 100%;
+            background-color: #02050a; 
+            padding: 40px 0;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.03); 
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #888;
+        }
+
+        .disclaimer {
+            font-size: 0.65rem;
+            line-height: 1.8;
+            color: #555; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .logo { font-size: 2.2rem; }
+            .top-bar-container { width: 95%; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Witaj</h1>
+
+    <nav class="top-bar">
+        <div class="top-bar-container">
+            <a href="#" class="nav-logo">POCHODNIAMC</a>
+            <div class="nav-links">
+                <a href="/regulamin">Regulamin</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="logo">POCHODNIAMC</div>
+        <h1>SKLEP I DOŁADOWANIE PORTFELA</h1>
+    </header>
+
+    <section class="tipply-section">
+        <p>Aby zasilić swoje konto, kliknij w poniższy przycisk i dokonaj wpłaty:</p>
+        <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">WPŁAĆ PRZEZ TIPPLY</a>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 15px;">Pamiętaj, aby w tytule podać swój nick z serwera!</p>
+    </section>
+
+    <div class="features">
+        <div class="card">
+            <span class="icon">🛡️</span>
+            <h3>Bezpieczne Zakupy</h3>
+            <p>Wszystkie transakcje są szyfrowane i zabezpieczone. Twoje dane oraz płatności są u nas w 100% bezpieczne.</p>
+        </div>
+
+        <div class="card">
+            <span class="icon">🕒</span>
+            <h3>Dostawa max 1 dzień</h3>
+            <p>Średni czas dodania środków to ok. 1 dzień. System działa sprawnie, byś nie musiał długo czekać.</p>
+        </div>
+
+        <div class="card">
+            <span class="icon">👥</span>
+            <h3>Weryfikacja Admina</h3>
+            <p>Każde doładowanie przechodzi przez ręczną akceptację. Gwarantuje to stabilność Twoich finansów i wsparcie techniczne.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">&copy; 2026 pochodnia.mcsh.io. WSZYSTKIE PRAWA ZASTRZEŻONE.</p>
+            <p class="disclaimer">
+                POCHODNIAMC NIE JEST W ŻADEN SPOSÓB POWIĄZANY Z FIRMĄ MOJANG AB. SERWER MINECRAFT JEST PROWADZONY PRZEZ SPOŁECZNOŚĆ I DLA SPOŁECZNOŚCI.
+            </p>
+        </div>
+    </footer>
+
 </body>
 </html>
