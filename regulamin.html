@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamin - PochodniaMC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050a14;
+            --card-bg: #0a1221;
+            --accent-blue: #1e90ff;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --nav-bg: rgba(5, 10, 20, 0.8);
+            --inner-box: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        /* --- TOP BAR (taki sam jak na głównej) --- */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .top-bar-container {
+            width: 90%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover { color: var(--accent-blue); }
+
+        /* --- CONTENT REGULAMINU --- */
+        .legal-container {
+            width: 90%;
+            max-width: 850px;
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            padding: 60px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .legal-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .legal-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .last-update {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .section-number {
+            color: var(--accent-blue);
+            font-style: italic;
+            font-size: 1.4rem;
+        }
+
+        .text-box {
+            background-color: var(--inner-box);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            color: var(--text-dim);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .text-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .text-box li {
+            margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            width: 100%;
+            background-color: #02050a; 
+            padding: 40px 0;
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.03); 
+            text-align: center;
+        }
+
+        .copyright { font-size: 0.8rem; font-weight: 700; color: #888; letter-spacing: 2px; margin-bottom: 10px; }
+        .disclaimer { font-size: 0.65rem; color: #555; text-transform: uppercase; max-width: 700px; margin: 0 auto; padding: 0 20px; }
+
+        @media (max-width: 600px) {
+            .legal-header h1 { font-size: 1.8rem; }
+            .legal-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-bar">
+        <div class="top-bar-container">
+            <a href="index.html" class="nav-logo">POCHODNIAMC</a>
+            <div class="nav-links">
+                <a href="index.html">Powrót do sklepu</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="legal-container">
+        <div class="legal-header">
+            <h1>Regulamin Usług</h1>
+            <span class="last-update">Ostatnia aktualizacja: 13.03.2026</span>
+        </div>
+
+        <div class="section-title">
+            <span class="section-number">01.</span> Postanowienia Ogólne
+        </div>
+        <div class="text-box">
+            Zakup jakiejkolwiek usługi na serwerze PochodniaMC jest dobrowolny. Środki wpłacane do portfela służą wyłącznie do wykorzystania wewnątrz ekosystemu gry pochodnia.mcsh.io. Korzystając ze sklepu, akceptujesz niniejszy regulamin oraz zasady panujące na serwerze.
+        </div>
+
+        <div class="section-title">
+            <span class="section-number">02.</span> Realizacja i Dostawa
+        </div>
+        <div class="text-box">
+            <ul>
+                <li>Średni czas realizacji zamówienia wynosi max 1 dzień roboczy.</li>
+                <li>W rzadkich przypadkach czas ten może wydłużyć się do 48 godzin.</li>
+                <li>Administratorzy dbają o to, by każda transakcja została przypisana do poprawnego konta gracza.</li>
+            </ul>
+        </div>
+
+        <div class="section-title">
+            <span class="section-number">03.</span> Polityka Zwrotów
+        </div>
+        <div class="text-box">
+            Z uwagi na charakter usług cyfrowych, które są dostarczane natychmiastowo po zaksięgowaniu, prawo do odstąpienia od umowy jest ograniczone.
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">&copy; 2026 pochodnia.mcsh.io. WSZYSTKIE PRAWA ZASTRZEŻONE.</p>
+            <p class="disclaimer">
+                POCHODNIAMC NIE JEST W ŻADEN SPOSÓB POWIĄZANY Z FIRMĄ MOJANG AB. SERWER MINECRAFT JEST PROWADZONY PRZEZ SPOŁECZNOŚĆ I DLA SPOŁECZNOŚCI.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
