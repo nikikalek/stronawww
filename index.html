@@ -202,6 +202,56 @@
             margin: 0 auto;
         }
 
+        .keys {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 40px;
+            margin-bottom: 50px;
+        }
+
+        .key {
+            flex: 1;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            padding: 30px 0px;
+        }
+
+        .key img {
+            width: 100%;
+            height: 250px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .key-title {
+            text-align: center;
+            font-size: 1.5rem;
+            padding-top: 15px;
+        }
+
+        .key p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+            margin: 0px;
+            padding: 10px 0px;
+        }
+
+        .key-price {
+            font-weight: 900;
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .key-button {
+            text-align: center;
+        }
+
         @media (max-width: 600px) {
             .logo { font-size: 2.2rem; }
             .top-bar-container { width: 95%; }
@@ -230,6 +280,36 @@
         <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 15px;">Pamiętaj, aby w tytule podać swój nick z serwera!</p>
     </section>
 
+    <div class="keys">
+        <div class="key">
+            <img src="images/klucz_anarchiczny.png" alt="klucz anarchiczny">
+            <div class="key-title">Klucz Anarchiczny</div>
+            <p>Klucz anarchiczny może otworzyć skrzynie anarchiczne.</p>
+            <div class="key-price">Cena: 3 zł</div>
+            <div class="key-button">
+                <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">KUP</a>
+            </div>
+        </div>
+        <div class="key">
+            <img src="images/klucz_epicki.png" alt="klucz anarchiczny">
+            <div class="key-title">Klucz Epicki</div>
+            <p>Klucz epicki może otworzyć skrzynie epickie.</p>
+            <div class="key-price">Cena: 2 zł</div>
+            <div class="key-button">
+                <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">KUP</a>
+            </div>
+        </div>
+        <div class="key">
+            <img src="images/klucz_rzadki.png" alt="klucz anarchiczny">
+            <div class="key-title">Klucz Rzadki</div>
+            <p>Klucz rzadki może otworzyć skrzynie rzadkie.</p>
+            <div class="key-price">Cena: 1 zł</div>
+            <div class="key-button">
+                <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">KUP</a>
+            </div>
+        </div>
+    </div>
+
     <div class="features">
         <div class="card">
             <span class="icon">🛡️</span>
@@ -239,8 +319,8 @@
 
         <div class="card">
             <span class="icon">🕒</span>
-            <h3>Dostawa max 1 dzień</h3>
-            <p>Średni czas dodania środków to ok. 1 dzień. System działa sprawnie, byś nie musiał długo czekać.</p>
+            <h3>Dostawa 6-12 godzin</h3>
+            <p>Średni czas dodania środków to ok. 6-12 godzin. System działa sprawnie, byś nie musiał długo czekać.</p>
         </div>
 
         <div class="card">
