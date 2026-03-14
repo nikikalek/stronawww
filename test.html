@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Mucha i Logo - Moja Strona Anarchii</title>
+    <style>
+        /* To jest kawałek CSS, który robi magię 'obok siebie' */
+        .kontener-obrazkow {
+            display: flex; /* Uruchamia system Flexbox */
+            align-items: center; /* Wyrównuje oba obrazki do środka w pionie */
+            gap: 20px; /* Robi 20px odstępu między muchą a logiem */
+        }
+
+        /* Ustawiamy maksymalną wielkość, żeby mucha nie zjadła ekranu */
+        .wielka-mucha {
+            max-width: 400px; /* Mucha będzie miała max 400px szerokości */
+            height: auto; /* Wysokość dopasuje się sama, żeby nie popsuć proporcji */
+        }
+
+        .male-logo {
+            max-width: 150px; /* Logo będzie mniejsze, max 150px */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mój pierwszy projekt HTML/CSS, biedaku!</h1>
+
+    <div class="kontener-obrazkow">
+        
+        <img src="mucha.jpg" alt="Wielka, straszna mucha" class="wielka-mucha">
+        
+        <img src="logo.png" alt="Logo mojej strony" class="male-logo">
+        
+    </div>
+    </body>
+</html>
