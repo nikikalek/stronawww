@@ -3,340 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PochodniaMC - Doładowanie</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #050a14;
-            --card-bg: #0a1221;
-            --accent-blue: #1e90ff;
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --border-color: rgba(30, 144, 255, 0.1);
-            --nav-bg: rgba(5, 10, 20, 0.8);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding-top: 80px; /* Miejsce na fixed top bar */
-        }
-
-        /* --- TOP BAR --- */
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            background-color: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .top-bar-container {
-            width: 90%;
-            max-width: 1100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-weight: 900;
-            letter-spacing: 1px;
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            transition: color 0.3s;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        /* --- RESZTA STRONY --- */
-        header {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 40px;
-        }
-
-        .logo {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            color: var(--accent-blue);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--text-dim);
-        }
-
-        .tipply-section {
-            width: 90%;
-            max-width: 600px;
-            background: linear-gradient(135deg, #0d1b33 0%, #0a1221 100%);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid var(--accent-blue);
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 60px;
-        }
-
-        .btn-tipply {
-            display: inline-block;
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 20px;
-        }
-
-        .btn-tipply:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            width: 90%;
-            max-width: 1100px;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 20px 15px;
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            transition: border 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--accent-blue);
-        }
-
-        .card h3 {
-            text-transform: uppercase;
-            font-weight: 900;
-            font-style: italic;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .icon {
-            font-size: 3rem; /* Zmniejszyłem z 6rem, żeby było bardziej estetyczne */
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .footer {
-            width: 100%;
-            background-color: #02050a; 
-            padding: 40px 0;
-            margin-top: auto;
-            border-top: 1px solid rgba(255, 255, 255, 0.03); 
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            color: #888;
-        }
-
-        .disclaimer {
-            font-size: 0.65rem;
-            line-height: 1.8;
-            color: #555; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .keys {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 30px;
-            padding: 0 40px;
-            margin-bottom: 50px;
-        }
-
-        .key {
-            flex: 1;
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            border: 1px solid var(--border-color);
-            padding: 30px 0px;
-        }
-
-        .key img {
-            width: 100%;
-            height: 250px;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-
-        .key-title {
-            text-align: center;
-            font-size: 1.5rem;
-            padding-top: 15px;
-        }
-
-        .key p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-align: center;
-            margin: 0px;
-            padding: 10px 0px;
-        }
-
-        .key-price {
-            font-weight: 900;
-            font-style: italic;
-            font-size: 1.3rem;
-            text-align: center;
-        }
-
-        .key-button {
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-            .logo { font-size: 2.2rem; }
-            .top-bar-container { width: 95%; }
-        }
-    </style>
+    <title>PochodniaMC — Anarchia Minecraft</title>
+    <meta name="description" content="PochodniaMC — serwer Minecraft anarchia. Bez reguł, bez limitów. Sklep i doładowanie portfela.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav class="top-bar">
-        <div class="top-bar-container">
-            <a href="#" class="nav-logo">POCHODNIAMC</a>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-icon">🔥</span>
+                POCHODNIAMC
+            </a>
             <div class="nav-links">
-                <a href="/stronawww/regulamin">Regulamin</a>
+                <a href="#start">Start</a>
+                <a href="#o-serwerze">O serwerze</a>
+                <a href="#sklep">Sklep</a>
+                <a href="regulamin.html">Regulamin</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="btn-icon" title="Discord (wkrótce)" aria-label="Discord">💬</a>
+                <a href="#sklep" class="btn-shop">🛒 SKLEP</a>
             </div>
         </div>
     </nav>
 
-    <header>
-        <div class="logo">POCHODNIAMC</div>
-        <h1>SKLEP I DOŁADOWANIE PORTFELA</h1>
-    </header>
+    <section class="hero" id="start">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Anarchia · Bez reguł
+                </div>
+                <h1 class="hero-title">PochodniaMC</h1>
+                <p class="hero-subtitle">Zagraj bez limitów.</p>
+                <p class="hero-desc">
+                    Hardcore survival w stylu anarchii — bez claimów, bez ochrony, bez hamulców.
+                    Tylko Ty, mapa i inni gracze. Dołącz, gdy serwer wystartuje.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#sklep" class="btn-primary">🛒 Otwórz sklep</a>
+                    <a href="#" class="btn-secondary">💬 Discord (wkrótce)</a>
+                </div>
+                <div class="ip-box">
+                    <div>
+                        <div class="ip-label">Adres serwera</div>
+                        <div class="ip-value">IP wkrótce</div>
+                    </div>
+                    <span class="ip-soon">Coming soon</span>
+                </div>
+            </div>
 
-    <section class="tipply-section">
-        <p>Aby zasilić swoje konto, kliknij w poniższy przycisk i dokonaj wpłaty:</p>
-        <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">WPŁAĆ PRZEZ TIPPLY</a>
-        <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 15px;">Pamiętaj, aby w tytule podać swój nick z serwera!</p>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hero-glow"></div>
+                <span class="hero-blocks tnt">🧨</span>
+                <span class="hero-blocks obsidian">⬛</span>
+                <div class="hero-logo-3d">
+                    <span class="letter-p">P</span><span class="letter-m">M</span>
+                </div>
+                <span class="floating-badge top-right">🔥 Anarchia</span>
+                <span class="floating-badge bottom-left">⚔ Bez reguł</span>
+            </div>
+        </div>
     </section>
 
-    <div class="keys">
-        <div class="key">
-            <img src="images/klucz_anarchiczny.png" alt="klucz anarchiczny">
-            <div class="key-title">Klucz Anarchiczny</div>
-            <p>Klucz anarchiczny może otworzyć skrzynie anarchiczne.</p>
-            <div class="key-price">Cena: 5 zł</div>
-            <div class="key-button">
-                <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">KUP</a>
-            </div>
-        </div>
-        <div class="key">
-            <img src="images/klucz_epicki.png" alt="klucz anarchiczny">
-            <div class="key-title">Klucz Epicki</div>
-            <p>Klucz epicki może otworzyć skrzynie epickie.</p>
-            <div class="key-price">Cena: 2 zł</div>
-            <div class="key-button">
-                <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">KUP</a>
-            </div>
-        </div>
-        <div class="key">
-            <img src="images/klucz_rzadki.png" alt="klucz anarchiczny">
-            <div class="key-title">Klucz Rzadki</div>
-            <p>Klucz rzadki może otworzyć skrzynie rzadkie.</p>
-            <div class="key-price">Cena: 1 zł</div>
-            <div class="key-button">
-                <a href="https://tipply.pl/@kalek" target="_blank" class="btn-tipply">KUP</a>
-            </div>
-        </div>
+    <div class="ticker-bar">
+        <div class="ticker-item">⚔ <span>Zero claimów</span></div>
+        <div class="ticker-item">🧨 <span>Pełna wolność PvP</span></div>
+        <div class="ticker-item">🌍 <span>Mapa bez resetów</span></div>
+        <div class="ticker-item">🔥 <span>PochodniaMC</span></div>
     </div>
 
-    <div class="features">
-        <div class="card">
-            <span class="icon">🛡️</span>
-            <h3>Bezpieczne Zakupy</h3>
-            <p>Wszystkie transakcje są szyfrowane i zabezpieczone. Twoje dane oraz płatności są u nas w 100% bezpieczne.</p>
+    <section class="section" id="o-serwerze">
+        <div class="section-header">
+            <h2>O serwerze</h2>
+            <p>Klasyczna anarchia w Minecraft — jak na najlepszych serwerach tego typu. Przetrwaj, buduj, niszcz.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <span class="icon">⚔️</span>
+                <h3>Bez ochrony</h3>
+                <p>Żadnych regionów ani SafeZone. Każdy może Cię zaatakować w każdym miejscu na mapie.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🧨</span>
+                <h3>Bez limitów</h3>
+                <p>TNT, grief, trap — wszystko dozwolone. Liczy się tylko to, czy przetrwasz.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🌍</span>
+                <h3>Świat na stałe</h3>
+                <p>Mapa nie jest co tydzień resetowana. Twoja historia zostaje na zawsze.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🔥</span>
+                <h3>Pochodnia</h3>
+                <p>Nazwa nie przypadkowa — na serwerze pali się prawdziwy ogień anarchii.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="sklep">
+        <div class="section-header">
+            <h2>Sklep</h2>
+            <p>Doładuj portfel lub kup klucze do skrzyń. Pamiętaj o nicku w tytule przelewu.</p>
         </div>
 
-        <div class="card">
-            <span class="icon">🕒</span>
-            <h3>Dostawa 6-12 godzin</h3>
-            <p>Średni czas dodania środków to ok. 6-12 godzin. System działa sprawnie, byś nie musiał długo czekać.</p>
+        <div class="tipply-box">
+            <p>Aby zasilić portfel na serwerze, dokonaj wpłaty przez Tipply:</p>
+            <a href="https://tipply.pl/@kalek" target="_blank" rel="noopener" class="btn-tipply">WPŁAĆ PRZEZ TIPPLY</a>
+            <p class="tipply-hint">W tytule przelewu podaj swój nick z serwera Minecraft.</p>
         </div>
 
-        <div class="card">
-            <span class="icon">👥</span>
-            <h3>Weryfikacja Admina</h3>
-            <p>Każde doładowanie przechodzi przez ręczną akceptację. Gwarantuje to stabilność Twoich finansów i wsparcie techniczne.</p>
+        <div class="keys">
+            <article class="key">
+                <img src="images/klucz_anarchiczny.png" alt="Klucz anarchiczny">
+                <div class="key-body">
+                    <h3 class="key-title">Klucz Anarchiczny</h3>
+                    <p>Otwiera skrzynie anarchiczne — najrzadsze nagrody.</p>
+                    <div class="key-price">5 zł</div>
+                    <a href="https://tipply.pl/@kalek" target="_blank" rel="noopener" class="btn-tipply">KUP</a>
+                </div>
+            </article>
+            <article class="key">
+                <img src="images/klucz_epicki.png" alt="Klucz epicki">
+                <div class="key-body">
+                    <h3 class="key-title">Klucz Epicki</h3>
+                    <p>Otwiera skrzynie epickie.</p>
+                    <div class="key-price">2 zł</div>
+                    <a href="https://tipply.pl/@kalek" target="_blank" rel="noopener" class="btn-tipply">KUP</a>
+                </div>
+            </article>
+            <article class="key">
+                <img src="images/klucz_rzadki.png" alt="Klucz rzadki">
+                <div class="key-body">
+                    <h3 class="key-title">Klucz Rzadki</h3>
+                    <p>Otwiera skrzynie rzadkie.</p>
+                    <div class="key-price">1 zł</div>
+                    <a href="https://tipply.pl/@kalek" target="_blank" rel="noopener" class="btn-tipply">KUP</a>
+                </div>
+            </article>
         </div>
-    </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <span class="icon">🛡️</span>
+                <h3>Bezpieczne zakupy</h3>
+                <p>Płatności przez Tipply — szyfrowane i sprawdzone.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">🕒</span>
+                <h3>Dostawa 6–12 h</h3>
+                <p>Średni czas realizacji doładowania to kilka godzin.</p>
+            </div>
+            <div class="feature-card">
+                <span class="icon">👥</span>
+                <h3>Weryfikacja admina</h3>
+                <p>Każda wpłata jest ręcznie przypisywana do konta gracza.</p>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
-        <div class="footer-content">
-            <p class="copyright">&copy; 2026 pochodniamc.mcsh.io WSZYSTKIE PRAWA ZASTRZEŻONE.</p>
-            <p class="disclaimer">
-                POCHODNIAMC NIE JEST W ŻADEN SPOSÓB POWIĄZANY Z FIRMĄ MOJANG AB. SERWER MINECRAFT JEST PROWADZONY PRZEZ SPOŁECZNOŚĆ I DLA SPOŁECZNOŚCI.
-            </p>
-        </div>
+        <p class="copyright">&copy; 2026 PochodniaMC — WSZYSTKIE PRAWA ZASTRZEŻONE</p>
+        <p class="disclaimer">
+            PochodniaMC nie jest powiązany z Mojang AB. Serwer Minecraft jest prowadzony przez społeczność i dla społeczności.
+        </p>
     </footer>
 
 </body>
