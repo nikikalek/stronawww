@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscordBotStudio — HardCode Premium</title>
+    <meta name="description" content="DiscordBotStudio — generator ikon rang. Premium 10 zł.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-icon">HC</span>
+                HARD<span class="brand-accent">CODE</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#start">Start</a>
+                <a href="index.html#oferta">Kreator</a>
+                <a href="studio.html">DiscordBotStudio</a>
+                <a href="translator.html">Translator</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://discord.gg/kFYyYj5YP9" target="_blank" rel="noopener" class="btn-icon" title="Discord" aria-label="Discord">💬</a>
+                <a href="index.html#kontakt" class="btn-shop btn-shop-solid">Premium 10 zł</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="tool-page">
+        <header class="tool-head">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                HardCode Premium · DiscordBotStudio
+            </div>
+            <h1 class="tool-title">Generator ikon rang</h1>
+            <p class="tool-subtitle">Podgląd na żywo + pobieranie PNG. Wpisz tekst i kliknij „Pobierz ikonę”.</p>
+        </header>
+
+        <section class="tool-shell">
+            <div class="tool-panel tool-preview">
+                <div class="tool-panel-head">
+                    <div class="tool-panel-title">Podgląd ikony</div>
+                    <div class="tool-badge">PNG 512×512</div>
+                </div>
+                <div class="tool-canvas-wrap">
+                    <canvas id="iconCanvas" width="512" height="512" class="tool-canvas"></canvas>
+                </div>
+                <div class="tool-actions">
+                    <button class="btn-primary tool-btn" id="downloadBtn" type="button">Pobierz ikonę (PNG)</button>
+                    <a class="btn-secondary tool-btn" href="index.html#kontakt">Kup Premium (10 zł)</a>
+                </div>
+            </div>
+
+            <div class="tool-panel tool-form">
+                <div class="tool-panel-head">
+                    <div class="tool-panel-title">Ustawienia</div>
+                    <div class="tool-badge tool-badge-premium">Premium</div>
+                </div>
+
+                <div class="tool-tabs" role="tablist" aria-label="Tryby generatora">
+                    <button class="tool-tab tool-tab-active" type="button">Tekst i skin</button>
+                    <button class="tool-tab" type="button" disabled>Styl i efekty</button>
+                    <button class="tool-tab" type="button" disabled>Kompozycja</button>
+                </div>
+
+                <div class="tool-fields">
+                    <label class="tool-field">
+                        <span class="tool-label">Tekst pomocniczy (góra)</span>
+                        <input id="topText" class="tool-input" value="RANGA" maxlength="18">
+                    </label>
+                    <label class="tool-field">
+                        <span class="tool-label">Tekst główny (dół)</span>
+                        <input id="bottomText" class="tool-input" value="VIP" maxlength="18">
+                    </label>
+                    <label class="tool-field">
+                        <span class="tool-label">Pseudonim (Discord)</span>
+                        <input id="nickname" class="tool-input" value="hardcode" maxlength="20">
+                    </label>
+                    <div class="tool-hint">
+                        To jest wersja front‑end (bez logowania). Docelowo możesz tu podpiąć system ról/locka Premium.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('iconCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const topTextEl = document.getElementById('topText');
+        const bottomTextEl = document.getElementById('bottomText');
+        const nicknameEl = document.getElementById('nickname');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        function roundRect(ctx, x, y, w, h, r) {
+            const rr = Math.min(r, w / 2, h / 2);
+            ctx.beginPath();
+            ctx.moveTo(x + rr, y);
+            ctx.arcTo(x + w, y, x + w, y + h, rr);
+            ctx.arcTo(x + w, y + h, x, y + h, rr);
+            ctx.arcTo(x, y + h, x, y, rr);
+            ctx.arcTo(x, y, x + w, y, rr);
+            ctx.closePath();
+        }
+
+        function drawIcon() {
+            const topText = (topTextEl.value || '').toUpperCase();
+            const bottomText = (bottomTextEl.value || '').toUpperCase();
+            const nick = (nicknameEl.value || '').trim();
+
+            ctx.clearRect(0, 0, 512, 512);
+
+            // background gradient
+            const bg = ctx.createLinearGradient(0, 0, 512, 512);
+            bg.addColorStop(0, '#120a1c');
+            bg.addColorStop(0.5, '#0b0820');
+            bg.addColorStop(1, '#070611');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 512, 512);
+
+            // glow ring
+            ctx.save();
+            ctx.translate(256, 240);
+            ctx.globalAlpha = 0.9;
+            ctx.shadowColor = 'rgba(168, 85, 247, 0.75)';
+            ctx.shadowBlur = 38;
+            ctx.strokeStyle = 'rgba(168, 85, 247, 0.9)';
+            ctx.lineWidth = 14;
+            ctx.beginPath();
+            ctx.arc(0, 0, 140, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
+
+            // avatar placeholder
+            ctx.save();
+            ctx.translate(256, 210);
+            ctx.shadowColor = 'rgba(56, 189, 248, 0.35)';
+            ctx.shadowBlur = 22;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
+            ctx.beginPath();
+            ctx.arc(0, 0, 88, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+
+            // nickname pill
+            if (nick) {
+                ctx.save();
+                ctx.globalAlpha = 0.95;
+                ctx.shadowColor = 'rgba(0,0,0,0.35)';
+                ctx.shadowBlur = 16;
+                ctx.fillStyle = 'rgba(7,6,17,0.78)';
+                roundRect(ctx, 156, 330, 200, 44, 14);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(124,58,237,0.35)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.font = '800 18px Inter, system-ui, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(nick, 256, 352);
+                ctx.restore();
+            }
+
+            // bottom label (pixel vibe)
+            ctx.save();
+            ctx.shadowColor = 'rgba(0,0,0,0.7)';
+            ctx.shadowBlur = 20;
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'white';
+
+            ctx.font = '900 44px Inter, system-ui, sans-serif';
+            ctx.fillText(topText, 256, 410);
+
+            // gradient for main text
+            const grad = ctx.createLinearGradient(140, 0, 372, 0);
+            grad.addColorStop(0, '#f472b6');
+            grad.addColorStop(1, '#38bdf8');
+            ctx.fillStyle = grad;
+            ctx.font = '900 86px Inter, system-ui, sans-serif';
+            ctx.fillText(bottomText, 256, 490);
+            ctx.restore();
+        }
+
+        function downloadPng() {
+            const a = document.createElement('a');
+            a.download = `hardcode_${(bottomTextEl.value || 'icon').toLowerCase()}.png`;
+            a.href = canvas.toDataURL('image/png');
+            a.click();
+        }
+
+        [topTextEl, bottomTextEl, nicknameEl].forEach((el) => el.addEventListener('input', drawIcon));
+        downloadBtn.addEventListener('click', downloadPng);
+        drawIcon();
+    </script>
+</body>
+</html>

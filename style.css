@@ -34,6 +34,214 @@ body {
     overflow-x: hidden;
 }
 
+.tool-page {
+    padding: calc(var(--nav-height) + 48px) 24px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.tool-head {
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto 28px;
+}
+
+.tool-title {
+    margin: 14px 0 10px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.tool-subtitle {
+    margin: 0;
+    color: var(--text-dim);
+    line-height: 1.7;
+}
+
+.tool-shell {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.tool-shell-wide {
+    grid-template-columns: 1fr 1fr;
+}
+
+.tool-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.tool-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.tool-panel-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-size: 0.8rem;
+}
+
+.tool-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.tool-badge-premium {
+    border-color: rgba(255, 207, 92, 0.35);
+    background: rgba(255, 207, 92, 0.08);
+    color: rgba(255, 228, 160, 0.95);
+}
+
+.tool-tabs {
+    display: flex;
+    gap: 10px;
+    padding: 16px 18px 0;
+    flex-wrap: wrap;
+}
+
+.tool-tab {
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.tool-tab:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.tool-tab-active {
+    color: #1b0b07;
+    border: 1px solid rgba(255, 207, 92, 0.45);
+    background: linear-gradient(135deg, rgba(255, 215, 128, 0.95), rgba(255, 184, 90, 0.88));
+}
+
+.tool-fields {
+    padding: 18px;
+    display: grid;
+    gap: 14px;
+}
+
+.tool-field {
+    display: grid;
+    gap: 8px;
+}
+
+.tool-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.tool-input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.92);
+    outline: none;
+    font-weight: 700;
+}
+
+.tool-input:focus {
+    border-color: rgba(124, 58, 237, 0.55);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.16);
+}
+
+.tool-hint {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    padding: 0 18px 18px;
+}
+
+.tool-canvas-wrap {
+    padding: 18px;
+}
+
+.tool-canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.tool-actions {
+    display: flex;
+    gap: 12px;
+    padding: 0 18px 18px;
+    flex-wrap: wrap;
+}
+
+.tool-actions-slim {
+    padding-top: 14px;
+}
+
+.tool-btn {
+    border: none;
+    cursor: pointer;
+}
+
+.tool-textarea {
+    width: calc(100% - 36px);
+    margin: 16px 18px 0;
+    min-height: 360px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.92);
+    outline: none;
+    resize: vertical;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.tool-textarea:focus {
+    border-color: rgba(124, 58, 237, 0.55);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.16);
+}
+
+@media (max-width: 960px) {
+    .tool-shell,
+    .tool-shell-wide {
+        grid-template-columns: 1fr;
+    }
+}
+
 .brand-accent {
     color: var(--purple-light);
 }

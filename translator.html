@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator — HardCode Tools</title>
+    <meta name="description" content="Translator configów/wiadomości — wklej tekst, wybierz język i pobierz wynik.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand-icon">HC</span>
+                HARD<span class="brand-accent">CODE</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#start">Start</a>
+                <a href="index.html#oferta">Kreator</a>
+                <a href="studio.html">DiscordBotStudio</a>
+                <a href="translator.html">Translator</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://discord.gg/kFYyYj5YP9" target="_blank" rel="noopener" class="btn-icon" title="Discord" aria-label="Discord">💬</a>
+                <a href="index.html#kontakt" class="btn-shop btn-shop-solid">Dodaj bota</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="tool-page">
+        <header class="tool-head">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                HardCode Tools · Translator
+            </div>
+            <h1 class="tool-title">Translator configów / wiadomości</h1>
+            <p class="tool-subtitle">Wklej tekst YAML/JSON lub zwykłe wiadomości. Zmiennych typu <code>{user}</code> i kodów <code>&amp;6</code> nie ruszamy.</p>
+        </header>
+
+        <section class="tool-shell tool-shell-wide">
+            <div class="tool-panel tool-form">
+                <div class="tool-panel-head">
+                    <div class="tool-panel-title">Oryginał</div>
+                    <div class="tool-badge">YAML/JSON/TXT</div>
+                </div>
+
+                <div class="tool-tabs" role="tablist" aria-label="Język oryginału">
+                    <button class="tool-tab tool-tab-active" id="langPL" type="button">PL</button>
+                    <button class="tool-tab" id="langEN" type="button">EN</button>
+                </div>
+
+                <textarea id="source" class="tool-textarea" spellcheck="false" placeholder="Wklej config / wiadomość..."></textarea>
+                <div class="tool-actions tool-actions-slim">
+                    <button class="btn-primary tool-btn" id="translateBtn" type="button">Przetłumacz</button>
+                    <button class="btn-secondary tool-btn" id="copyBtn" type="button">Kopiuj wynik</button>
+                </div>
+                <div class="tool-hint">
+                    Translator działa offline (bez API). To szybki „helper” — do masowej translacji możesz dopisać własny słownik w kodzie.
+                </div>
+            </div>
+
+            <div class="tool-panel tool-preview">
+                <div class="tool-panel-head">
+                    <div class="tool-panel-title">Wynik</div>
+                    <div class="tool-badge">Po polsku</div>
+                </div>
+                <textarea id="result" class="tool-textarea" spellcheck="false" placeholder="Tu pojawi się wynik..." readonly></textarea>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const source = document.getElementById('source');
+        const result = document.getElementById('result');
+        const translateBtn = document.getElementById('translateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const langPL = document.getElementById('langPL');
+        const langEN = document.getElementById('langEN');
+
+        let from = 'pl';
+        function setLang(next) {
+            from = next;
+            if (from === 'pl') {
+                langPL.classList.add('tool-tab-active');
+                langEN.classList.remove('tool-tab-active');
+            } else {
+                langEN.classList.add('tool-tab-active');
+                langPL.classList.remove('tool-tab-active');
+            }
+        }
+        langPL.addEventListener('click', () => setLang('pl'));
+        langEN.addEventListener('click', () => setLang('en'));
+
+        const dictEnToPl = new Map([
+            ['welcome', 'witaj'],
+            ['goodbye', 'żegnaj'],
+            ['ticket', 'zgłoszenie'],
+            ['tickets', 'zgłoszenia'],
+            ['support', 'pomoc'],
+            ['settings', 'ustawienia'],
+            ['enabled', 'włączone'],
+            ['disabled', 'wyłączone'],
+            ['role', 'rola'],
+            ['roles', 'role'],
+            ['channel', 'kanał'],
+            ['channels', 'kanały'],
+            ['message', 'wiadomość'],
+            ['messages', 'wiadomości'],
+            ['admin', 'admin'],
+            ['moderation', 'moderacja'],
+            ['warning', 'ostrzeżenie'],
+            ['warnings', 'ostrzeżenia'],
+            ['ban', 'ban'],
+            ['mute', 'mute'],
+            ['unmute', 'odcisz'],
+            ['logs', 'logi'],
+            ['dashboard', 'panel'],
+            ['premium', 'premium'],
+            ['free', 'darmowe'],
+            ['error', 'błąd'],
+            ['success', 'sukces'],
+            ['required', 'wymagane'],
+            ['access', 'dostęp'],
+            ['login', 'zaloguj'],
+            ['discord', 'discord']
+        ]);
+
+        function protectTokens(input) {
+            const tokens = [];
+            const protectedText = input.replace(/(\{[^}]+\}|&[0-9a-fk-or])/gi, (m) => {
+                const id = tokens.length;
+                tokens.push(m);
+                return `__TOK${id}__`;
+            });
+            return { protectedText, tokens };
+        }
+
+        function restoreTokens(input, tokens) {
+            return input.replace(/__TOK(\d+)__/g, (_, n) => tokens[Number(n)] ?? '');
+        }
+
+        function translateLooseText(text) {
+            // bardzo lekka translacja: słowo -> słowo, bez rozwalania formatowania
+            const parts = text.split(/(\s+|[,:.()\"'\\[\\]{}<>!?-]+)/);
+            const out = parts.map((p) => {
+                const key = p.toLowerCase();
+                if (!/^[a-z]+$/.test(key)) return p;
+                return dictEnToPl.get(key) ?? p;
+            });
+            return out.join('');
+        }
+
+        function translateAll() {
+            const raw = source.value || '';
+            if (!raw.trim()) {
+                result.value = '';
+                return;
+            }
+
+            // jeśli źródło PL → wynik = źródło (bo “tłumaczenie” niepotrzebne)
+            if (from === 'pl') {
+                result.value = raw;
+                return;
+            }
+
+            const { protectedText, tokens } = protectTokens(raw);
+            const translated = translateLooseText(protectedText);
+            result.value = restoreTokens(translated, tokens);
+        }
+
+        async function copyResult() {
+            if (!result.value) return;
+            try {
+                await navigator.clipboard.writeText(result.value);
+                copyBtn.textContent = 'Skopiowano';
+                setTimeout(() => (copyBtn.textContent = 'Kopiuj wynik'), 1000);
+            } catch {
+                // fallback
+                result.focus();
+                result.select();
+                document.execCommand('copy');
+            }
+        }
+
+        translateBtn.addEventListener('click', translateAll);
+        copyBtn.addEventListener('click', copyResult);
+        source.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'enter') translateAll();
+        });
+    </script>
+</body>
+</html>
