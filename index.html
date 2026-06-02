@@ -113,60 +113,273 @@
         </div>
 
         <div class="tool-toolbar" aria-label="Nawigacja narzędzi">
-            <a class="tool-pill tool-pill-active" href="studio.html">DiscordBotStudio</a>
-            <a class="tool-pill" href="#kreator">GUIKOD</a>
-            <a class="tool-pill" href="#kreator">GUITXT</a>
-            <a class="tool-pill" href="#kreator">HEX</a>
-            <a class="tool-pill" href="#kreator">SZAFKA</a>
-            <a class="tool-pill" href="#kreator">KAPITALIK</a>
-            <a class="tool-pill" href="#kreator">PREFIKSY</a>
-            <a class="tool-pill" href="#kreator">MOTD</a>
-            <a class="tool-pill" href="#kreator">TITLES3D</a>
-            <a class="tool-pill" href="#kreator">EMBED GRAPHIC</a>
-            <a class="tool-pill" href="#kreator">TABLIST</a>
-            <a class="tool-pill" href="#kreator">SIDEBAR</a>
-            <a class="tool-pill" href="#kreator">IKONKI</a>
-            <a class="tool-pill" href="#kreator">PACKCREATOR</a>
-            <a class="tool-pill" href="translator.html">TRANSLATOR</a>
+            <button class="tool-pill tool-pill-active" type="button" data-tool="discordbotstudio">DiscordBotStudio</button>
+            <button class="tool-pill" type="button" data-tool="guikod">GUIKOD</button>
+            <button class="tool-pill" type="button" data-tool="guitxt">GUITXT</button>
+            <button class="tool-pill" type="button" data-tool="hex">HEX</button>
+            <button class="tool-pill" type="button" data-tool="szafka">SZAFKA</button>
+            <button class="tool-pill" type="button" data-tool="kapitalik">KAPITALIK</button>
+            <button class="tool-pill" type="button" data-tool="prefiksy">PREFIKSY</button>
+            <button class="tool-pill" type="button" data-tool="motd">MOTD</button>
+            <button class="tool-pill" type="button" data-tool="titles3d">TITLES3D</button>
+            <button class="tool-pill" type="button" data-tool="embed">EMBED GRAPHIC</button>
+            <button class="tool-pill" type="button" data-tool="tablist">TABLIST</button>
+            <button class="tool-pill" type="button" data-tool="sidebar">SIDEBAR</button>
+            <button class="tool-pill" type="button" data-tool="ikonki">IKONKI</button>
+            <button class="tool-pill" type="button" data-tool="packcreator">PACKCREATOR</button>
+            <button class="tool-pill" type="button" data-tool="translator">TRANSLATOR</button>
         </div>
 
-        <div class="tool-grid" id="kreator">
-            <article class="tool-card">
-                <div class="tool-icon">🧩</div>
-                <h3>GUIKOD</h3>
-                <p>Szybkie generowanie gotowych fragmentów pod komendy i automatyzacje.</p>
-                <div class="tool-meta">Darmowe</div>
-            </article>
-            <article class="tool-card">
-                <div class="tool-icon">✍️</div>
-                <h3>GUITXT</h3>
-                <p>Szablony tekstów: wiadomości powitalne, regulaminy, ogłoszenia, opisy kanałów.</p>
-                <div class="tool-meta">Darmowe</div>
-            </article>
-            <article class="tool-card">
-                <div class="tool-icon">🎨</div>
-                <h3>HEX</h3>
-                <p>Generator kolorów i gradientów pod estetyczne wiadomości i embedy.</p>
-                <div class="tool-meta">Darmowe</div>
-            </article>
-            <article class="tool-card">
-                <div class="tool-icon">🧰</div>
-                <h3>PREFIKSY</h3>
-                <p>Gotowe prefiksy i formaty komend pod różne style serwerów.</p>
-                <div class="tool-meta">Darmowe</div>
-            </article>
-            <article class="tool-card">
-                <div class="tool-icon">🧾</div>
-                <h3>EMBED GRAPHIC</h3>
-                <p>Pomoc w składaniu czytelnych embedów: nagłówki, przyciski, sekcje i układ.</p>
-                <div class="tool-meta">Darmowe</div>
-            </article>
-            <article class="tool-card">
-                <div class="tool-icon">📌</div>
-                <h3>SIDEBAR</h3>
-                <p>Układ kategorii i kanałów — gotowe struktury i nazwy do szybkiego startu.</p>
-                <div class="tool-meta">Darmowe</div>
-            </article>
+        <div class="tool-workspace" id="kreator">
+            <div class="tool-view tool-view-active" data-tool-view="discordbotstudio">
+                <section class="tool-shell">
+                    <div class="tool-panel tool-preview">
+                        <div class="tool-panel-head">
+                            <div class="tool-panel-title">Podgląd ikony</div>
+                            <div class="tool-badge">PNG 512×512</div>
+                        </div>
+                        <div class="tool-canvas-wrap">
+                            <canvas id="iconCanvas" width="512" height="512" class="tool-canvas"></canvas>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn-primary tool-btn" id="downloadBtn" type="button">Pobierz ikonę (PNG)</button>
+                            <a class="btn-secondary tool-btn" href="#kontakt">Kup Premium (10 zł)</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-panel tool-form">
+                        <div class="tool-panel-head">
+                            <div class="tool-panel-title">Ustawienia</div>
+                            <div class="tool-badge tool-badge-premium">Premium</div>
+                        </div>
+
+                        <div class="tool-tabs" role="tablist" aria-label="Tryby generatora">
+                            <button class="tool-tab tool-tab-active" type="button">Tekst i skin</button>
+                            <button class="tool-tab" type="button" disabled>Styl i efekty</button>
+                            <button class="tool-tab" type="button" disabled>Kompozycja</button>
+                        </div>
+
+                        <div class="tool-fields">
+                            <label class="tool-field">
+                                <span class="tool-label">Tekst pomocniczy (góra)</span>
+                                <input id="topText" class="tool-input" value="RANGA" maxlength="18">
+                            </label>
+                            <label class="tool-field">
+                                <span class="tool-label">Tekst główny (dół)</span>
+                                <input id="bottomText" class="tool-input" value="VIP" maxlength="18">
+                            </label>
+                            <label class="tool-field">
+                                <span class="tool-label">Pseudonim (Discord)</span>
+                                <input id="nickname" class="tool-input" value="hardcode" maxlength="20">
+                            </label>
+                            <div class="tool-hint">
+                                Wersja demo (front‑end). Docelowo możesz tu dodać blokadę Premium po roli na Discord.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tool-view" data-tool-view="translator">
+                <section class="tool-shell tool-shell-wide">
+                    <div class="tool-panel tool-form">
+                        <div class="tool-panel-head">
+                            <div class="tool-panel-title">Oryginał</div>
+                            <div class="tool-badge">YAML/JSON/TXT</div>
+                        </div>
+
+                        <div class="tool-tabs" role="tablist" aria-label="Język oryginału">
+                            <button class="tool-tab tool-tab-active" id="langPL" type="button">PL</button>
+                            <button class="tool-tab" id="langEN" type="button">EN</button>
+                        </div>
+
+                        <textarea id="source" class="tool-textarea" spellcheck="false" placeholder="Wklej config / wiadomość..."></textarea>
+                        <div class="tool-actions tool-actions-slim">
+                            <button class="btn-primary tool-btn" id="translateBtn" type="button">Przetłumacz</button>
+                            <button class="btn-secondary tool-btn" id="copyBtn" type="button">Kopiuj wynik</button>
+                        </div>
+                        <div class="tool-hint">
+                            Translator działa offline (bez API) i nie rusza tokenów typu <code>{user}</code> oraz kodów <code>&amp;6</code>.
+                        </div>
+                    </div>
+
+                    <div class="tool-panel tool-preview">
+                        <div class="tool-panel-head">
+                            <div class="tool-panel-title">Wynik</div>
+                            <div class="tool-badge">Po polsku</div>
+                        </div>
+                        <textarea id="result" class="tool-textarea" spellcheck="false" placeholder="Tu pojawi się wynik..." readonly></textarea>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tool-view" data-tool-view="guikod">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🧩</div>
+                    <div class="tool-placeholder-title">GUIKOD</div>
+                    <div class="tool-placeholder-text">Wkrótce: generator kodu + eksport. (Na razie działają: DiscordBotStudio i Translator.)</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="guitxt">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">✍️</div>
+                    <div class="tool-placeholder-title">GUITXT</div>
+                    <div class="tool-placeholder-text">Wkrótce: generator gotowych tekstów dla kanałów i embedów.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="hex">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🎨</div>
+                    <div class="tool-placeholder-title">HEX</div>
+                    <div class="tool-placeholder-text">Wkrótce: generator kolorów i gradientów.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="szafka">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🧰</div>
+                    <div class="tool-placeholder-title">SZAFKA</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="kapitalik">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🔡</div>
+                    <div class="tool-placeholder-title">KAPITALIK</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="prefiksy">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🏷️</div>
+                    <div class="tool-placeholder-title">PREFIKSY</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="motd">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">📰</div>
+                    <div class="tool-placeholder-title">MOTD</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="titles3d">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🪧</div>
+                    <div class="tool-placeholder-title">TITLES3D</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="embed">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🧾</div>
+                    <div class="tool-placeholder-title">EMBED GRAPHIC</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="tablist">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">📋</div>
+                    <div class="tool-placeholder-title">TABLIST</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="sidebar">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">📌</div>
+                    <div class="tool-placeholder-title">SIDEBAR</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="ikonki">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">🧿</div>
+                    <div class="tool-placeholder-title">IKONKI</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+
+            <div class="tool-view" data-tool-view="packcreator">
+                <div class="tool-placeholder">
+                    <div class="tool-placeholder-icon">📦</div>
+                    <div class="tool-placeholder-title">PACKCREATOR</div>
+                    <div class="tool-placeholder-text">Wkrótce.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="nasza-oferta">
+        <div class="section-header">
+            <h2>Nasza oferta</h2>
+            <p>Kompleksowe rozwiązania dla Twojego projektu — dokładnie jak na przykładzie.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <span class="icon">🧩</span>
+                <h3>Pluginy Minecraft</h3>
+                <p>Tworzymy niestandardowe pluginy rozszerzające funkcjonalność Twojego serwera.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🛠️</span>
+                <h3>Tworzenie Serwerów</h3>
+                <p>Kompleksowa konfiguracja i optymalizacja, zapewniająca stabilne środowisko.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🎨</span>
+                <h3>Projektowanie Graficzne</h3>
+                <p>Kreujemy unikalne loga, banery i grafiki, które wyróżnią Twój projekt.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">📣</span>
+                <h3>Reklama Serwera</h3>
+                <p>Docieramy do tysięcy graczy dzięki sprawdzonym kanałom i siatce partnerów.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🌿</span>
+                <h3>Niestandardowe Biomy</h3>
+                <p>Wdrażamy unikalne biomy, które przeniosą graczy w nowe, niepowtarzalne światy.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🎬</span>
+                <h3>Trailery Promocyjne</h3>
+                <p>Tworzymy dynamiczne wideo, skutecznie przyciągające nowych odbiorców.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">📈</span>
+                <h3>Promocja Projektu</h3>
+                <p>Profesjonalny marketing i budowanie wizerunku Twojej marki w social mediach.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🧊</span>
+                <h3>Modele 3D</h3>
+                <p>Zaawansowane modele 3D, które wzbogacą Twój texture pack i rozgrywkę.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🌐</span>
+                <h3>Strony WWW</h3>
+                <p>Responsywne i funkcjonalne strony internetowe dopasowane do Twojej marki.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🤖</span>
+                <h3>Boty Discord</h3>
+                <p>Inteligentne boty automatyzujące zadania i ułatwiające zarządzanie społecznością.</p>
+            </div>
+            <div class="about-card">
+                <span class="icon">🏗️</span>
+                <h3>Budowle Minecraft</h3>
+                <p>Epickie mapy i konstrukcje realizowane przez profesjonalnych budowniczych.</p>
+            </div>
         </div>
     </section>
 
@@ -212,6 +425,247 @@
             HardCode nie jest powiązany z Discord Inc. Discord jest znakiem towarowym Discord Inc.
         </p>
     </footer>
+
+    <script>
+        // --- TOOL SWITCHER (jak w ServerCreators: bez przechodzenia na inne linki) ---
+        const toolButtons = Array.from(document.querySelectorAll('[data-tool]'));
+        const toolViews = Array.from(document.querySelectorAll('[data-tool-view]'));
+
+        function setActiveTool(tool) {
+            toolButtons.forEach((b) => b.classList.toggle('tool-pill-active', b.dataset.tool === tool));
+            toolViews.forEach((v) => v.classList.toggle('tool-view-active', v.dataset.toolView === tool));
+        }
+
+        toolButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                setActiveTool(btn.dataset.tool);
+                const el = document.getElementById('kreator');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // --- DISCORDBOTSTUDIO (canvas) ---
+        const canvas = document.getElementById('iconCanvas');
+        const ctx = canvas ? canvas.getContext('2d') : null;
+        const topTextEl = document.getElementById('topText');
+        const bottomTextEl = document.getElementById('bottomText');
+        const nicknameEl = document.getElementById('nickname');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        function roundRect(ctx, x, y, w, h, r) {
+            const rr = Math.min(r, w / 2, h / 2);
+            ctx.beginPath();
+            ctx.moveTo(x + rr, y);
+            ctx.arcTo(x + w, y, x + w, y + h, rr);
+            ctx.arcTo(x + w, y + h, x, y + h, rr);
+            ctx.arcTo(x, y + h, x, y, rr);
+            ctx.arcTo(x, y, x + w, y, rr);
+            ctx.closePath();
+        }
+
+        function drawIcon() {
+            if (!ctx) return;
+            const topText = (topTextEl?.value || '').toUpperCase();
+            const bottomText = (bottomTextEl?.value || '').toUpperCase();
+            const nick = (nicknameEl?.value || '').trim();
+
+            ctx.clearRect(0, 0, 512, 512);
+
+            const bg = ctx.createLinearGradient(0, 0, 512, 512);
+            bg.addColorStop(0, '#120a1c');
+            bg.addColorStop(0.5, '#0b0820');
+            bg.addColorStop(1, '#070611');
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 512, 512);
+
+            ctx.save();
+            ctx.translate(256, 240);
+            ctx.globalAlpha = 0.9;
+            ctx.shadowColor = 'rgba(168, 85, 247, 0.75)';
+            ctx.shadowBlur = 38;
+            ctx.strokeStyle = 'rgba(168, 85, 247, 0.9)';
+            ctx.lineWidth = 14;
+            ctx.beginPath();
+            ctx.arc(0, 0, 140, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
+
+            ctx.save();
+            ctx.translate(256, 210);
+            ctx.shadowColor = 'rgba(56, 189, 248, 0.35)';
+            ctx.shadowBlur = 22;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
+            ctx.beginPath();
+            ctx.arc(0, 0, 88, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+
+            if (nick) {
+                ctx.save();
+                ctx.globalAlpha = 0.95;
+                ctx.shadowColor = 'rgba(0,0,0,0.35)';
+                ctx.shadowBlur = 16;
+                ctx.fillStyle = 'rgba(7,6,17,0.78)';
+                roundRect(ctx, 156, 330, 200, 44, 14);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(124,58,237,0.35)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.font = '800 18px Inter, system-ui, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(nick, 256, 352);
+                ctx.restore();
+            }
+
+            ctx.save();
+            ctx.shadowColor = 'rgba(0,0,0,0.7)';
+            ctx.shadowBlur = 20;
+            ctx.textAlign = 'center';
+            ctx.fillStyle = 'white';
+            ctx.font = '900 44px Inter, system-ui, sans-serif';
+            ctx.fillText(topText, 256, 410);
+
+            const grad = ctx.createLinearGradient(140, 0, 372, 0);
+            grad.addColorStop(0, '#f472b6');
+            grad.addColorStop(1, '#38bdf8');
+            ctx.fillStyle = grad;
+            ctx.font = '900 86px Inter, system-ui, sans-serif';
+            ctx.fillText(bottomText, 256, 490);
+            ctx.restore();
+        }
+
+        function downloadPng() {
+            if (!canvas) return;
+            const a = document.createElement('a');
+            a.download = `hardcode_${(bottomTextEl?.value || 'icon').toLowerCase()}.png`;
+            a.href = canvas.toDataURL('image/png');
+            a.click();
+        }
+
+        [topTextEl, bottomTextEl, nicknameEl].forEach((el) => el && el.addEventListener('input', drawIcon));
+        if (downloadBtn) downloadBtn.addEventListener('click', downloadPng);
+        drawIcon();
+
+        // --- TRANSLATOR ---
+        const source = document.getElementById('source');
+        const result = document.getElementById('result');
+        const translateBtn = document.getElementById('translateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const langPL = document.getElementById('langPL');
+        const langEN = document.getElementById('langEN');
+
+        let from = 'pl';
+        function setLang(next) {
+            from = next;
+            if (from === 'pl') {
+                langPL?.classList.add('tool-tab-active');
+                langEN?.classList.remove('tool-tab-active');
+            } else {
+                langEN?.classList.add('tool-tab-active');
+                langPL?.classList.remove('tool-tab-active');
+            }
+        }
+        langPL?.addEventListener('click', () => setLang('pl'));
+        langEN?.addEventListener('click', () => setLang('en'));
+
+        const dictEnToPl = new Map([
+            ['welcome', 'witaj'],
+            ['goodbye', 'żegnaj'],
+            ['ticket', 'zgłoszenie'],
+            ['tickets', 'zgłoszenia'],
+            ['support', 'pomoc'],
+            ['settings', 'ustawienia'],
+            ['enabled', 'włączone'],
+            ['disabled', 'wyłączone'],
+            ['role', 'rola'],
+            ['roles', 'role'],
+            ['channel', 'kanał'],
+            ['channels', 'kanały'],
+            ['message', 'wiadomość'],
+            ['messages', 'wiadomości'],
+            ['admin', 'admin'],
+            ['moderation', 'moderacja'],
+            ['warning', 'ostrzeżenie'],
+            ['warnings', 'ostrzeżenia'],
+            ['ban', 'ban'],
+            ['mute', 'mute'],
+            ['unmute', 'odcisz'],
+            ['logs', 'logi'],
+            ['dashboard', 'panel'],
+            ['premium', 'premium'],
+            ['free', 'darmowe'],
+            ['error', 'błąd'],
+            ['success', 'sukces'],
+            ['required', 'wymagane'],
+            ['access', 'dostęp'],
+            ['login', 'zaloguj'],
+            ['discord', 'discord']
+        ]);
+
+        function protectTokens(input) {
+            const tokens = [];
+            const protectedText = input.replace(/(\{[^}]+\}|&[0-9a-fk-or])/gi, (m) => {
+                const id = tokens.length;
+                tokens.push(m);
+                return `__TOK${id}__`;
+            });
+            return { protectedText, tokens };
+        }
+
+        function restoreTokens(input, tokens) {
+            return input.replace(/__TOK(\d+)__/g, (_, n) => tokens[Number(n)] ?? '');
+        }
+
+        function translateLooseText(text) {
+            const parts = text.split(/(\s+|[,:.()\"'\\[\\]{}<>!?-]+)/);
+            const out = parts.map((p) => {
+                const key = p.toLowerCase();
+                if (!/^[a-z]+$/.test(key)) return p;
+                return dictEnToPl.get(key) ?? p;
+            });
+            return out.join('');
+        }
+
+        function translateAll() {
+            if (!source || !result) return;
+            const raw = source.value || '';
+            if (!raw.trim()) {
+                result.value = '';
+                return;
+            }
+            if (from === 'pl') {
+                result.value = raw;
+                return;
+            }
+            const { protectedText, tokens } = protectTokens(raw);
+            const translated = translateLooseText(protectedText);
+            result.value = restoreTokens(translated, tokens);
+        }
+
+        async function copyResult() {
+            if (!result?.value) return;
+            try {
+                await navigator.clipboard.writeText(result.value);
+                if (copyBtn) copyBtn.textContent = 'Skopiowano';
+                setTimeout(() => copyBtn && (copyBtn.textContent = 'Kopiuj wynik'), 1000);
+            } catch {
+                result.focus();
+                result.select();
+                document.execCommand('copy');
+            }
+        }
+
+        translateBtn?.addEventListener('click', translateAll);
+        copyBtn?.addEventListener('click', copyResult);
+        source?.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'enter') translateAll();
+        });
+
+        // start
+        setActiveTool('discordbotstudio');
+    </script>
 
 </body>
 </html>
