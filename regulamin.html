@@ -3,78 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regulamin — HardCode</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Regulamin — FootballMC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="page-bg" aria-hidden="true"></div>
 
-    <nav class="navbar">
-        <div class="navbar-inner">
-            <a href="index.html" class="nav-brand">
-                <span class="nav-brand-icon">HC</span>
-                HARD<span class="brand-accent">CODE</span>
+    <header class="nav">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⚽</span>
+                Football<span class="accent">MC</span>
             </a>
-            <div class="nav-links">
+            <nav class="nav-links">
                 <a href="index.html#start">Start</a>
-                <a href="index.html#o-nas">O nas</a>
-                <a href="index.html#oferta">Oferta</a>
-                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#tryb">Tryb gry</a>
+                <a href="index.html#dolacz">Dołącz</a>
                 <a href="regulamin.html">Regulamin</a>
+            </nav>
+            <div class="nav-cta-wrap">
+                <a href="index.html#dolacz" class="nav-cta">Graj teraz</a>
             </div>
-            <div class="nav-actions">
-                <a href="index.html#kontakt" class="btn-shop btn-shop-solid">SKLEP</a>
-            </div>
+            <button class="menu-btn" type="button" id="menuBtn" aria-label="Menu">☰</button>
         </div>
-    </nav>
+    </header>
 
     <main class="page-legal">
-        <div class="legal-container">
-            <div class="legal-header">
-                <h1>Regulamin usług</h1>
-                <span class="last-update">Ostatnia aktualizacja: 13.03.2026</span>
-            </div>
+        <div class="legal-box">
+            <h1>Regulamin serwera</h1>
+            <p class="legal-meta">FootballMC — ostatnia aktualizacja: 2026</p>
 
-            <div class="section-title">
-                <span class="section-number">01.</span> Postanowienia ogólne
-            </div>
-            <div class="text-box">
-                Zakup jakiejkolwiek usługi w HardCode jest dobrowolny. Płatności oraz forma rozliczeń są ustalane indywidualnie. Korzystając z naszych usług, akceptujesz niniejszy regulamin.
-            </div>
+            <h2>1. Postanowienia ogólne</h2>
+            <p>Grając na serwerze FootballMC akceptujesz niniejszy regulamin oraz decyzje administracji. Serwer jest prowadzony dla społeczności graczy.</p>
 
-            <div class="section-title">
-                <span class="section-number">02.</span> Dostęp do narzędzi
-            </div>
-            <div class="text-box">
-                Narzędzia dostępne na stronie HardCode działają w przeglądarce i są udostępniane bezpłatnie. HardCode może wprowadzać zmiany w narzędziach,
-                poprawki oraz nowe funkcje bez wcześniejszego powiadomienia.
-            </div>
+            <h2>2. Zasady gry</h2>
+            <ul>
+                <li>Zakaz cheatów, exploitów i bugów dających przewagę.</li>
+                <li>Szanuj innych graczy — brak toxica, spamu i prowokacji.</li>
+                <li>Decyzje adminów w sprawach kar są ostateczne.</li>
+            </ul>
 
-            <div class="section-title">
-                <span class="section-number">03.</span> Odpowiedzialność
-            </div>
-            <div class="text-box">
-                Użytkownik odpowiada za sposób wykorzystania wygenerowanych treści i konfiguracji. HardCode nie ponosi odpowiedzialności za szkody wynikające z
-                nieprawidłowego użycia narzędzi, błędnej konfiguracji serwera Discord lub działań osób trzecich.
-            </div>
+            <h2>3. Kary</h2>
+            <p>Łamanie regulaminu może skutkować warnem, kickiem, banem czasowym lub permanentnym — w zależności od wagi wykroczenia.</p>
 
-            <div class="section-title">
-                <span class="section-number">04.</span> Kontakt
-            </div>
-            <div class="text-box">
-                W sprawach zgłoszeń, propozycji funkcji i błędów prosimy o kontakt poprzez serwer Discord HardCode.
-            </div>
+            <h2>4. Sklep i płatności</h2>
+            <p>Zakupy w sklepie serwera są dobrowolne. Środki z płatności wspierają utrzymanie serwera. Szczegóły realizacji podawane są przy zakupie.</p>
+
+            <h2>5. Kontakt</h2>
+            <p>W sprawach regulaminu i odwołań — Discord serwera FootballMC.</p>
         </div>
     </main>
 
     <footer class="footer">
-        <p class="copyright">&copy; 2026 HardCode — WSZYSTKIE PRAWA ZASTRZEŻONE</p>
-        <p class="disclaimer">
-            HardCode nie jest powiązany z Discord Inc. Discord jest znakiem towarowym Discord Inc.
-        </p>
+        <div class="container">
+            <p>&copy; 2026 FootballMC</p>
+        </div>
     </footer>
 
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html#start">Start</a>
+        <a href="index.html#dolacz">Dołącz</a>
+        <a href="regulamin.html">Regulamin</a>
+    </div>
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('open'));
+    </script>
 </body>
 </html>

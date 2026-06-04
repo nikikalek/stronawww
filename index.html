@@ -3,1573 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HardCode — Kreator narzędzi</title>
-    <meta name="description" content="HardCode — darmowy kreator narzędzi i bot Discord. Wszystko za darmo.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <title>FootballMC — Serwer Minecraft</title>
+    <meta name="description" content="FootballMC — serwer Minecraft z trybem piłkarskim. Dołącz i graj z przyjaciółmi!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="page-bg" aria-hidden="true"></div>
 
-    <nav class="navbar">
-        <div class="navbar-inner">
-            <a href="index.html" class="nav-brand">
-                <span class="nav-brand-icon">HC</span>
-                HARD<span class="brand-accent">CODE</span>
+    <header class="nav">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⚽</span>
+                Football<span class="accent">MC</span>
             </a>
-            <div class="nav-links">
+            <nav class="nav-links" aria-label="Menu">
                 <a href="#start">Start</a>
-                <a href="#o-nas">Funkcje</a>
-                <a href="#oferta">Kreator</a>
-                <a href="#nasza-oferta">Oferta</a>
+                <a href="#tryb">Tryb gry</a>
+                <a href="#dolacz">Dołącz</a>
+                <a href="#sklep">Sklep</a>
                 <a href="regulamin.html">Regulamin</a>
+            </nav>
+            <div class="nav-cta-wrap">
+                <a href="#dolacz" class="nav-cta">Graj teraz</a>
             </div>
-            <div class="nav-actions">
-                <a href="https://discord.gg/kFYyYj5YP9" target="_blank" rel="noopener" class="btn-icon" title="Discord" aria-label="Discord">💬</a>
-                <a href="#oferta" class="btn-shop">Kreator</a>
-                <a href="https://discord.gg/kFYyYj5YP9" target="_blank" rel="noopener" class="btn-shop btn-shop-solid">Discord</a>
-            </div>
+            <button class="menu-btn" type="button" id="menuBtn" aria-label="Menu">☰</button>
         </div>
-    </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#start">Start</a>
+        <a href="#tryb">Tryb gry</a>
+        <a href="#dolacz">Dołącz</a>
+        <a href="#sklep">Sklep</a>
+        <a href="regulamin.html">Regulamin</a>
+        <a href="#dolacz" class="btn btn-primary" style="margin-top:8px;text-align:center;">Graj teraz</a>
+    </div>
 
     <section class="hero" id="start">
-        <div class="hero-inner">
+        <div class="container hero-grid">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    HardCode · Bot Discord
-                </div>
-                <h1 class="hero-title">HardCode</h1>
-                <p class="hero-subtitle">Twój serwer. Jeden bot.</p>
-                <p class="hero-desc">
-                    Bot Discord z moderacją, ticketami i automatyzacją pod polskie społeczności.
-                    Wszystkie moduły i narzędzia są w 100% darmowe.
+                <h1>Twój serwer <span class="accent">Football</span> na nowym poziomie</h1>
+                <p class="hero-lead">
+                    FootballMC to Minecraft z pasją do piłki — mecze, drużyny, rankingi i własna ekonomia.
+                    Zbierz ekipę i wjedź na boisko już dziś.
                 </p>
-                <div class="hero-buttons">
-                    <a href="https://discord.gg/kFYyYj5YP9" target="_blank" rel="noopener" class="btn-primary">Dodaj bota na serwer</a>
-                    <a href="#oferta" class="btn-secondary">Otwórz kreator</a>
+                <div class="hero-btns">
+                    <a href="#dolacz" class="btn btn-primary">Zacznij grać</a>
+                    <a href="#sklep" class="btn btn-outline">Sklep serwera</a>
                 </div>
-                <div class="ip-box" role="note">
+                <div class="ip-card">
                     <div>
-                        <div class="ip-label">Discord HardCode</div>
-                        <div class="ip-value">discord.gg/kFYyYj5YP9</div>
+                        <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">IP serwera</div>
+                        <code id="serverIp">play.footballmc.pl</code>
                     </div>
-                    <span class="ip-soon">Online</span>
+                    <button type="button" class="ip-copy" id="copyIp">Kopiuj IP</button>
                 </div>
             </div>
 
             <div class="hero-visual" aria-hidden="true">
-                <div class="hero-glow"></div>
-                <div class="hero-logo-3d">
-                    <span class="letter-p">H</span><span class="letter-m">C</span>
+                <div class="hero-shape"></div>
+                <svg class="hero-character" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+                    <!-- prosta postać w stylu Minecraft + korona -->
+                    <rect x="70" y="20" width="60" height="55" fill="#e8c4a0" rx="4"/>
+                    <rect x="55" y="8" width="90" height="22" fill="#f5c518" rx="3"/>
+                    <rect x="60" y="4" width="18" height="18" fill="#f5c518"/>
+                    <rect x="122" y="4" width="18" height="18" fill="#f5c518"/>
+                    <rect x="78" y="38" width="12" height="8" fill="#1a1a1a"/>
+                    <rect x="110" y="38" width="12" height="8" fill="#1a1a1a"/>
+                    <rect x="62" y="75" width="76" height="90" fill="#f5c518"/>
+                    <rect x="50" y="85" width="22" height="70" fill="#d4a80f"/>
+                    <rect x="128" y="85" width="22" height="70" fill="#d4a80f"/>
+                    <rect x="68" y="165" width="28" height="55" fill="#2d5a27"/>
+                    <rect x="104" y="165" width="28" height="55" fill="#2d5a27"/>
+                    <rect x="62" y="218" width="32" height="12" fill="#1a1a1a"/>
+                    <rect x="106" y="218" width="32" height="12" fill="#1a1a1a"/>
+                    <!-- piłka -->
+                    <circle cx="155" cy="200" r="22" fill="#fff"/>
+                    <path d="M155 178 L165 195 L155 212 L145 195 Z" fill="#1a1a1a" opacity="0.3"/>
+                    <rect x="148" y="188" width="14" height="14" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="tryb">
+        <div class="container">
+            <div class="section-head">
+                <h2>Co znajdziesz na <span class="accent">FootballMC</span>?</h2>
+                <p>Serwer stworzony pod mecze, rywalizację i dobrą zabawę — bez nudy na spawnie.</p>
+            </div>
+            <div class="features">
+                <article class="feature">
+                    <div class="feature-icon">⚽</div>
+                    <h3>Tryb piłkarski</h3>
+                    <p>Mecze drużynowe, ligi i eventy — graj jak na prawdziwym boisku, tylko w Minecraft.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Rankingi</h3>
+                    <p>Wspinaj się w tabeli, zdobywaj trofea i pokaż, kto rządzi na boisku.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Drużyny</h3>
+                    <p>Zakładaj kluby, zapraszaj znajomych i grajcie razem w jednej ekipie.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Ekonomia</h3>
+                    <p>Zarabiaj w grze, kupuj ulepszenia i personalizuj swoją postać.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Anty-cheat</h3>
+                    <p>Fair play na pierwszym miejscu — cheaty nie mają u nas szans.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">📢</div>
+                    <h3>Eventy</h3>
+                    <p>Regularne turnieje i nagrody — zawsze coś się dzieje na serwerze.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="dolacz" style="background: var(--bg-2);">
+        <div class="container">
+            <div class="section-head">
+                <h2>Jak dołączyć?</h2>
+                <p>Trzy proste kroki i jesteś na boisku.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Minecraft Java</h3>
+                    <p>Potrzebujesz wersji Java (1.20+). Bedrock — sprawdź Discord.</p>
                 </div>
-                <span class="floating-badge top-right">Panel WWW</span>
-                <span class="floating-badge bottom-left">Darmowe narzędzia</span>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>IP serwera</h3>
+                    <p>Wklej IP w Multiplayer → Dodaj serwer i połącz się.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>Graj!</h3>
+                    <p>Wejdź na Discord po pomoc, regulamin i ogłoszenia o meczach.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="ticker-bar">
-        <div class="ticker-item">🛡️ <span>Auto‑moderacja</span></div>
-        <div class="ticker-item">🎫 <span>System ticketów</span></div>
-        <div class="ticker-item">📊 <span>Statystyki serwera</span></div>
-        <div class="ticker-item">⚙️ <span>Automatyczne role</span></div>
-    </div>
-
-    <section class="section" id="o-nas">
-        <div class="section-header">
-            <h2>Funkcje bota</h2>
-            <p>HardCode ogarnia podstawy na każdym serwerze — od porządku na czacie po ogarnięte zgłoszenia.</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-card">
-                <span class="icon">🧠</span>
-                <h3>Moderacja</h3>
-                <p>Warny, mute, ban, automatyczne filtry, anty‑spam i logi akcji w jednym miejscu.</p>
+    <section class="section" id="sklep">
+        <div class="container">
+            <div class="shop-banner">
+                <div>
+                    <h2>Sklep serwera</h2>
+                    <p>Wspieraj serwer i odblokuj kosmetyki, rangi VIP i bonusy — link wkrótce lub na Discord.</p>
+                </div>
+                <a href="#dolacz" class="btn btn-primary">Sprawdź IP</a>
             </div>
-            <div class="about-card">
-                <span class="icon">⚙️</span>
-                <h3>Automatyzacja</h3>
-                <p>Role za reakcje, powitania, automatyczne wiadomości i proste komendy użytkowe.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">⚡</span>
-                <h3>Ticket system</h3>
-                <p>Zgłoszenia w prywatnych kanałach, transkrypcje i kategorie pod support oraz rekrutacje.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🛡️</span>
-                <h3>Bezpieczeństwo</h3>
-                <p>Ochrona przed raidami, ograniczenia dla nowych kont i podstawowe anty‑nuke.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="oferta">
-        <div class="section-header">
-            <h2>Kreator</h2>
-            <p>Narzędzia do tworzenia serwera na Discordzie. Wszystko jest <strong>za darmo</strong>.</p>
-        </div>
-
-        <div class="tool-toolbar" aria-label="Nawigacja narzędzi">
-            <button class="tool-pill tool-pill-active" type="button" data-tool="discordbotstudio">DiscordBotStudio</button>
-            <button class="tool-pill" type="button" data-tool="guikod">GUIKOD</button>
-            <button class="tool-pill" type="button" data-tool="guitxt">GUITXT</button>
-            <button class="tool-pill" type="button" data-tool="hex">HEX</button>
-            <button class="tool-pill" type="button" data-tool="szafka">SZAFKA</button>
-            <button class="tool-pill" type="button" data-tool="kapitalik">KAPITALIK</button>
-            <button class="tool-pill" type="button" data-tool="prefiksy">PREFIKSY</button>
-            <button class="tool-pill" type="button" data-tool="motd">MOTD</button>
-            <button class="tool-pill" type="button" data-tool="titles3d">TITLES3D</button>
-            <button class="tool-pill" type="button" data-tool="embed">EMBED GRAPHIC</button>
-            <button class="tool-pill" type="button" data-tool="tablist">TABLIST</button>
-            <button class="tool-pill" type="button" data-tool="sidebar">SIDEBAR</button>
-            <button class="tool-pill" type="button" data-tool="ikonki">IKONKI</button>
-            <button class="tool-pill" type="button" data-tool="packcreator">PACKCREATOR</button>
-            <button class="tool-pill" type="button" data-tool="translator">TRANSLATOR</button>
-        </div>
-
-        <div class="tool-workspace" id="kreator">
-            <div class="tool-view tool-view-active" data-tool-view="discordbotstudio">
-                <section class="tool-shell">
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Podgląd ikony</div>
-                            <div class="tool-badge">PNG 512×512</div>
-                        </div>
-                        <div class="tool-canvas-wrap">
-                            <canvas id="iconCanvas" width="512" height="512" class="tool-canvas"></canvas>
-                        </div>
-                        <div class="tool-actions">
-                            <button class="btn-primary tool-btn" id="downloadBtn" type="button">Pobierz ikonę (PNG)</button>
-                            <a class="btn-secondary tool-btn" href="https://discord.gg/kFYyYj5YP9" target="_blank" rel="noopener">Dołącz na Discord</a>
-                        </div>
-                    </div>
-
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Ustawienia</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-
-                        <div class="tool-tabs" role="tablist" aria-label="Tryby generatora">
-                            <button class="tool-tab tool-tab-active" type="button">Tekst i skin</button>
-                            <button class="tool-tab" type="button" disabled>Styl i efekty</button>
-                            <button class="tool-tab" type="button" disabled>Kompozycja</button>
-                        </div>
-
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Tekst pomocniczy (góra)</span>
-                                <input id="topText" class="tool-input" value="RANGA" maxlength="18">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Tekst główny (dół)</span>
-                                <input id="bottomText" class="tool-input" value="VIP" maxlength="18">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Pseudonim (Discord)</span>
-                                <input id="nickname" class="tool-input" value="hardcode" maxlength="20">
-                            </label>
-                            <div class="tool-hint">
-                                Wszystko działa w przeglądarce (bez logowania). Po prostu wpisz tekst i pobierz PNG.
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="translator">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Oryginał</div>
-                            <div class="tool-badge">YAML/JSON/TXT</div>
-                        </div>
-
-                        <div class="tool-tabs" role="tablist" aria-label="Język oryginału">
-                            <button class="tool-tab tool-tab-active" id="langPL" type="button">PL</button>
-                            <button class="tool-tab" id="langEN" type="button">EN</button>
-                        </div>
-
-                        <textarea id="source" class="tool-textarea" spellcheck="false" placeholder="Wklej config / wiadomość..."></textarea>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="translateBtn" type="button">Przetłumacz</button>
-                            <button class="btn-secondary tool-btn" id="copyBtn" type="button">Kopiuj wynik</button>
-                        </div>
-                        <div class="tool-hint">
-                            Translator działa offline (bez API) i nie rusza tokenów typu <code>{user}</code> oraz kodów <code>&amp;6</code>.
-                        </div>
-                    </div>
-
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Wynik</div>
-                            <div class="tool-badge">Po polsku</div>
-                        </div>
-                        <textarea id="result" class="tool-textarea" spellcheck="false" placeholder="Tu pojawi się wynik..." readonly></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="guikod">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Generator embed (JSON)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Tytuł</span>
-                                <input id="embedTitle" class="tool-input" value="HardCode — ogłoszenie" maxlength="80">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Opis</span>
-                                <input id="embedDesc" class="tool-input" value="Witaj! Skorzystaj z kreatora narzędzi na stronie." maxlength="150">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kolor (HEX)</span>
-                                <input id="embedColor" class="tool-input" value="#7c3aed" maxlength="9">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Tekst przycisku</span>
-                                <input id="embedBtnText" class="tool-input" value="Dołącz na Discord" maxlength="40">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Link przycisku</span>
-                                <input id="embedBtnUrl" class="tool-input" value="https://discord.gg/kFYyYj5YP9" maxlength="200">
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="embedCopyBtn" type="button">Kopiuj JSON</button>
-                            <button class="btn-secondary tool-btn" id="embedResetBtn" type="button">Reset</button>
-                        </div>
-                        <div class="tool-hint">Gotowy JSON pod webhook / bota. Możesz wkleić i edytować w swoim projekcie.</div>
-                    </div>
-
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Podgląd JSON</div>
-                            <div class="tool-badge">Discord</div>
-                        </div>
-                        <textarea id="embedOut" class="tool-textarea" spellcheck="false" readonly></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="guitxt">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Szablony tekstów</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Szablon</span>
-                                <select id="txtTemplate" class="tool-input">
-                                    <option value="welcome">Powitanie</option>
-                                    <option value="rules">Regulamin (krótki)</option>
-                                    <option value="recruit">Rekrutacja</option>
-                                    <option value="ticket">Ticket panel</option>
-                                    <option value="announce">Ogłoszenie</option>
-                                </select>
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Nazwa serwera</span>
-                                <input id="txtServer" class="tool-input" value="HardCode" maxlength="40">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Link Discord</span>
-                                <input id="txtDiscord" class="tool-input" value="https://discord.gg/kFYyYj5YP9" maxlength="200">
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="txtCopyBtn" type="button">Kopiuj tekst</button>
-                            <button class="btn-secondary tool-btn" id="txtRegenerateBtn" type="button">Generuj</button>
-                        </div>
-                        <div class="tool-hint">Wstawki: <code>{user}</code>, <code>{server}</code>, <code>{discord}</code>.</div>
-                    </div>
-
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Wynik</div>
-                            <div class="tool-badge">TXT</div>
-                        </div>
-                        <textarea id="txtOut" class="tool-textarea" spellcheck="false"></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="hex">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Gradient / HEX</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Kolor 1</span>
-                                <input id="hexC1" class="tool-input" type="color" value="#7c3aed">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kolor 2</span>
-                                <input id="hexC2" class="tool-input" type="color" value="#38bdf8">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kierunek</span>
-                                <select id="hexDir" class="tool-input">
-                                    <option value="90deg">90deg</option>
-                                    <option value="45deg">45deg</option>
-                                    <option value="135deg">135deg</option>
-                                    <option value="180deg">180deg</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="hexCopyBtn" type="button">Kopiuj CSS</button>
-                            <button class="btn-secondary tool-btn" id="hexRandomBtn" type="button">Losuj</button>
-                        </div>
-                        <div class="tool-hint">Dostajesz gotowy <code>linear-gradient(...)</code> do embedów / UI.</div>
-                    </div>
-
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Podgląd</div>
-                            <div class="tool-badge">Preview</div>
-                        </div>
-                        <div class="hex-preview" id="hexPreview"></div>
-                        <textarea id="hexOut" class="tool-textarea" spellcheck="false" readonly></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="szafka">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Szafka (notatki)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Tytuł</span>
-                                <input id="lockerTitle" class="tool-input" value="Notatka" maxlength="40">
-                            </label>
-                        </div>
-                        <textarea id="lockerBody" class="tool-textarea" spellcheck="false" placeholder="Wpisz notatkę..."></textarea>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="lockerSaveBtn" type="button">Zapisz</button>
-                            <button class="btn-secondary tool-btn" id="lockerClearBtn" type="button">Wyczyść</button>
-                        </div>
-                        <div class="tool-hint">Zapis jest lokalnie w przeglądarce (localStorage).</div>
-                    </div>
-
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Twoje notatki</div>
-                            <div class="tool-badge">Lista</div>
-                        </div>
-                        <div class="locker-list" id="lockerList"></div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-secondary tool-btn" id="lockerDeleteAllBtn" type="button">Usuń wszystko</button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="kapitalik">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Kapitalik</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <textarea id="capsIn" class="tool-textarea" spellcheck="false" placeholder="Wklej tekst..."></textarea>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" data-caps="upper" type="button">UPPERCASE</button>
-                            <button class="btn-secondary tool-btn" data-caps="lower" type="button">lowercase</button>
-                            <button class="btn-secondary tool-btn" data-caps="title" type="button">Title Case</button>
-                            <button class="btn-secondary tool-btn" data-caps="alt" type="button">aLtErNaTe</button>
-                        </div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Wynik</div>
-                            <div class="tool-badge">TXT</div>
-                        </div>
-                        <textarea id="capsOut" class="tool-textarea" spellcheck="false"></textarea>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="capsCopyBtn" type="button">Kopiuj</button>
-                            <button class="btn-secondary tool-btn" id="capsClearBtn" type="button">Wyczyść</button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="prefiksy">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Prefiksy (Discord)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Tag</span>
-                                <input id="prefixTag" class="tool-input" value="VIP" maxlength="12">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Nazwa</span>
-                                <input id="prefixName" class="tool-input" value="użytkownik" maxlength="20">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Separator</span>
-                                <select id="prefixSep" class="tool-input">
-                                    <option value=":">:</option>
-                                    <option value="»">»</option>
-                                    <option value="-">-</option>
-                                </select>
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kolor tagu</span>
-                                <select id="prefixColor" class="tool-input">
-                                    <option value="🟣">🟣</option>
-                                    <option value="🔵">🔵</option>
-                                    <option value="🟢">🟢</option>
-                                    <option value="🟡">🟡</option>
-                                    <option value="🔴">🔴</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="prefixCopyBtn" type="button">Kopiuj</button>
-                            <button class="btn-secondary tool-btn" id="prefixGenBtn" type="button">Generuj</button>
-                        </div>
-                        <div class="tool-hint">To jest format tekstowy do opisów / przykładów (Discord nie ma “prefixów czatu” jak MC).</div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Podgląd</div>
-                            <div class="tool-badge">Preview</div>
-                        </div>
-                        <div class="prefix-preview" id="prefixPreview"></div>
-                        <textarea id="prefixOut" class="tool-textarea" spellcheck="false"></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="motd">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Generator MOTD (Discord)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Nagłówek</span>
-                                <input id="motdTitle" class="tool-input" value="Witamy na {server}!" maxlength="80">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Treść</span>
-                                <input id="motdBody" class="tool-input" value="Kliknij 🎫 aby otworzyć ticket. Miłej zabawy!" maxlength="120">
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="motdGenBtn" type="button">Generuj</button>
-                            <button class="btn-secondary tool-btn" id="motdCopyBtn" type="button">Kopiuj</button>
-                        </div>
-                        <div class="tool-hint">Wstawki: <code>{server}</code> i <code>{discord}</code>.</div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Wynik</div>
-                            <div class="tool-badge">TXT</div>
-                        </div>
-                        <textarea id="motdOut" class="tool-textarea" spellcheck="false"></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="titles3d">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Titles3D (stylizator)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <textarea id="t3dIn" class="tool-textarea" spellcheck="false" placeholder="Wpisz tekst..."></textarea>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" data-t3d="bold" type="button">BOLD</button>
-                            <button class="btn-secondary tool-btn" data-t3d="smallcaps" type="button">SmallCaps</button>
-                            <button class="btn-secondary tool-btn" data-t3d="bubble" type="button">Bubble</button>
-                            <button class="btn-secondary tool-btn" id="t3dCopyBtn" type="button">Kopiuj</button>
-                        </div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Wynik</div>
-                            <div class="tool-badge">TXT</div>
-                        </div>
-                        <textarea id="t3dOut" class="tool-textarea" spellcheck="false"></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="embed">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Embed Graphic (prosty)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Tytuł</span>
-                                <input id="egTitle" class="tool-input" value="Informacja" maxlength="80">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Opis</span>
-                                <input id="egDesc" class="tool-input" value="Treść embeda..." maxlength="150">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kolor</span>
-                                <input id="egColor" class="tool-input" type="color" value="#7c3aed">
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="egCopyBtn" type="button">Kopiuj JSON</button>
-                            <button class="btn-secondary tool-btn" id="egGenBtn" type="button">Generuj</button>
-                        </div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">JSON</div>
-                            <div class="tool-badge">Webhook</div>
-                        </div>
-                        <textarea id="egOut" class="tool-textarea" spellcheck="false" readonly></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="tablist">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Tablist (lista ról/sekcji)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Tytuł</span>
-                                <input id="tabTitle" class="tool-input" value="Role na serwerze" maxlength="60">
-                            </label>
-                        </div>
-                        <textarea id="tabItems" class="tool-textarea" spellcheck="false" placeholder="Jedna linia = jedna pozycja&#10;np. Właściciel&#10;Admin&#10;Moderator&#10;VIP"></textarea>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="tabGenBtn" type="button">Generuj</button>
-                            <button class="btn-secondary tool-btn" id="tabCopyBtn" type="button">Kopiuj</button>
-                        </div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Wynik</div>
-                            <div class="tool-badge">TXT</div>
-                        </div>
-                        <textarea id="tabOut" class="tool-textarea" spellcheck="false"></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="sidebar">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Sidebar (układ kanałów)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <textarea id="sbIn" class="tool-textarea" spellcheck="false" placeholder="Wpisz kategorie i kanały w formacie:&#10;# Informacje&#10;- regulamin&#10;- ogłoszenia&#10;# Support&#10;- ticket"></textarea>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="sbGenBtn" type="button">Generuj</button>
-                            <button class="btn-secondary tool-btn" id="sbCopyBtn" type="button">Kopiuj</button>
-                        </div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Wynik</div>
-                            <div class="tool-badge">TXT</div>
-                        </div>
-                        <textarea id="sbOut" class="tool-textarea" spellcheck="false"></textarea>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="ikonki">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Ikonki (prosty generator)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Litera</span>
-                                <input id="icoLetter" class="tool-input" value="S" maxlength="2">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kolor tła</span>
-                                <input id="icoBg" class="tool-input" type="color" value="#7c3aed">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kolor litery</span>
-                                <input id="icoFg" class="tool-input" type="color" value="#ffffff">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Kształt</span>
-                                <select id="icoShape" class="tool-input">
-                                    <option value="hex">Sześciokąt</option>
-                                    <option value="circle">Koło</option>
-                                    <option value="square">Kwadrat</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="icoDlBtn" type="button">Pobierz PNG</button>
-                            <button class="btn-secondary tool-btn" id="icoRedrawBtn" type="button">Odśwież</button>
-                        </div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Podgląd</div>
-                            <div class="tool-badge">PNG 512×512</div>
-                        </div>
-                        <div class="tool-canvas-wrap">
-                            <canvas id="icoCanvas" width="512" height="512" class="tool-canvas"></canvas>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="tool-view" data-tool-view="packcreator">
-                <section class="tool-shell tool-shell-wide">
-                    <div class="tool-panel tool-form">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">PackCreator (export JSON)</div>
-                            <div class="tool-badge">Darmowe</div>
-                        </div>
-                        <div class="tool-fields">
-                            <label class="tool-field">
-                                <span class="tool-label">Nazwa paczki</span>
-                                <input id="packName" class="tool-input" value="HardCode Pack" maxlength="40">
-                            </label>
-                            <label class="tool-field">
-                                <span class="tool-label">Opis</span>
-                                <input id="packDesc" class="tool-input" value="Zestaw ustawień i szablonów z kreatora." maxlength="120">
-                            </label>
-                        </div>
-                        <div class="tool-actions tool-actions-slim">
-                            <button class="btn-primary tool-btn" id="packDlBtn" type="button">Pobierz .json</button>
-                            <button class="btn-secondary tool-btn" id="packGenBtn" type="button">Generuj</button>
-                        </div>
-                        <div class="tool-hint">To prosta paczka z Twoimi ustawieniami z tej strony (do importu/backupów).</div>
-                    </div>
-                    <div class="tool-panel tool-preview">
-                        <div class="tool-panel-head">
-                            <div class="tool-panel-title">Zawartość</div>
-                            <div class="tool-badge">JSON</div>
-                        </div>
-                        <textarea id="packOut" class="tool-textarea" spellcheck="false" readonly></textarea>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="nasza-oferta">
-        <div class="section-header">
-            <h2>Nasza oferta</h2>
-            <p>Kompleksowe rozwiązania dla Twojego projektu — dokładnie jak na przykładzie.</p>
-        </div>
-        <div class="about-grid">
-            <div class="about-card">
-                <span class="icon">🧩</span>
-                <h3>Pluginy Minecraft</h3>
-                <p>Tworzymy niestandardowe pluginy rozszerzające funkcjonalność Twojego serwera.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🛠️</span>
-                <h3>Tworzenie Serwerów</h3>
-                <p>Kompleksowa konfiguracja i optymalizacja, zapewniająca stabilne środowisko.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🎨</span>
-                <h3>Projektowanie Graficzne</h3>
-                <p>Kreujemy unikalne loga, banery i grafiki, które wyróżnią Twój projekt.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">📣</span>
-                <h3>Reklama Serwera</h3>
-                <p>Docieramy do tysięcy graczy dzięki sprawdzonym kanałom i siatce partnerów.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🌿</span>
-                <h3>Niestandardowe Biomy</h3>
-                <p>Wdrażamy unikalne biomy, które przeniosą graczy w nowe, niepowtarzalne światy.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🎬</span>
-                <h3>Trailery Promocyjne</h3>
-                <p>Tworzymy dynamiczne wideo, skutecznie przyciągające nowych odbiorców.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">📈</span>
-                <h3>Promocja Projektu</h3>
-                <p>Profesjonalny marketing i budowanie wizerunku Twojej marki w social mediach.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🧊</span>
-                <h3>Modele 3D</h3>
-                <p>Zaawansowane modele 3D, które wzbogacą Twój texture pack i rozgrywkę.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🌐</span>
-                <h3>Strony WWW</h3>
-                <p>Responsywne i funkcjonalne strony internetowe dopasowane do Twojej marki.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🤖</span>
-                <h3>Boty Discord</h3>
-                <p>Inteligentne boty automatyzujące zadania i ułatwiające zarządzanie społecznością.</p>
-            </div>
-            <div class="about-card">
-                <span class="icon">🏗️</span>
-                <h3>Budowle Minecraft</h3>
-                <p>Epickie mapy i konstrukcje realizowane przez profesjonalnych budowniczych.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="studio">
-        <div class="section-header">
-            <h2>Discord Bot Studio</h2>
-            <p>Generator ikon, presety komend i szablony konfiguracji — wszystko w 100% darmowe.</p>
-        </div>
-        <div class="features">
-            <div class="feature-card">
-                <span class="icon">🎨</span>
-                <h3>Ikony rang</h3>
-                <p>Generator ikon stylizowanych pod gry — wprowadzasz nazwę rangi i pobierasz gotową grafikę.</p>
-            </div>
-            <div class="feature-card">
-                <span class="icon">🧩</span>
-                <h3>Presety komend</h3>
-                <p>Gotowe zestawy komend moderacji, ticketów i utility, które wklejasz prosto na swój serwer.</p>
-            </div>
-            <div class="feature-card">
-                <span class="icon">📁</span>
-                <h3>Szablony konfiguracji</h3>
-                <p>Podstawowe configi do popularnych ról i kanałów — mniej klikania, więcej działania.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="kontakt">
-        <div class="section-header">
-            <h2>Kontakt</h2>
-            <p>Dołącz na Discord HardCode, żeby zgłosić buga albo zaproponować funkcję.</p>
-        </div>
-        <div class="tipply-box">
-            <p><strong>Discord:</strong> <a href="https://discord.gg/kFYyYj5YP9" target="_blank" rel="noopener">discord.gg/kFYyYj5YP9</a></p>
-            <p><strong>E-mail:</strong> wkrótce</p>
-            <p class="tipply-hint">Wbij na serwer i napisz, jakie narzędzie mam dodać jako następne — dorabiamy wszystko na żywo.</p>
         </div>
     </section>
 
     <footer class="footer">
-        <p class="copyright">&copy; 2026 HardCode — WSZYSTKIE PRAWA ZASTRZEŻONE</p>
-        <p class="disclaimer">
-            HardCode nie jest powiązany z Discord Inc. Discord jest znakiem towarowym Discord Inc.
-        </p>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⚽</span>
+                Football<span class="accent">MC</span>
+            </a>
+            <p>&copy; 2026 FootballMC — nie jest powiązany z Mojang AB.</p>
+        </div>
     </footer>
 
     <script>
-        // --- TOOL SWITCHER (jak w ServerCreators: bez przechodzenia na inne linki) ---
-        const toolButtons = Array.from(document.querySelectorAll('[data-tool]'));
-        const toolViews = Array.from(document.querySelectorAll('[data-tool-view]'));
-
-        function setActiveTool(tool) {
-            toolButtons.forEach((b) => b.classList.toggle('tool-pill-active', b.dataset.tool === tool));
-            toolViews.forEach((v) => v.classList.toggle('tool-view-active', v.dataset.toolView === tool));
-        }
-
-        toolButtons.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                setActiveTool(btn.dataset.tool);
-                const el = document.getElementById('kreator');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('open');
+        });
+        mobileMenu?.querySelectorAll('a').forEach((a) => {
+            a.addEventListener('click', () => mobileMenu.classList.remove('open'));
         });
 
-        // --- DISCORDBOTSTUDIO (canvas) ---
-        const canvas = document.getElementById('iconCanvas');
-        const ctx = canvas ? canvas.getContext('2d') : null;
-        const topTextEl = document.getElementById('topText');
-        const bottomTextEl = document.getElementById('bottomText');
-        const nicknameEl = document.getElementById('nickname');
-        const downloadBtn = document.getElementById('downloadBtn');
-
-        function roundRect(ctx, x, y, w, h, r) {
-            const rr = Math.min(r, w / 2, h / 2);
-            ctx.beginPath();
-            ctx.moveTo(x + rr, y);
-            ctx.arcTo(x + w, y, x + w, y + h, rr);
-            ctx.arcTo(x + w, y + h, x, y + h, rr);
-            ctx.arcTo(x, y + h, x, y, rr);
-            ctx.arcTo(x, y, x + w, y, rr);
-            ctx.closePath();
-        }
-
-        function drawIcon() {
-            if (!ctx) return;
-            const topText = (topTextEl?.value || '').toUpperCase();
-            const bottomText = (bottomTextEl?.value || '').toUpperCase();
-            const nick = (nicknameEl?.value || '').trim();
-
-            ctx.clearRect(0, 0, 512, 512);
-
-            const bg = ctx.createLinearGradient(0, 0, 512, 512);
-            bg.addColorStop(0, '#120a1c');
-            bg.addColorStop(0.5, '#0b0820');
-            bg.addColorStop(1, '#070611');
-            ctx.fillStyle = bg;
-            ctx.fillRect(0, 0, 512, 512);
-
-            ctx.save();
-            ctx.translate(256, 240);
-            ctx.globalAlpha = 0.9;
-            ctx.shadowColor = 'rgba(168, 85, 247, 0.75)';
-            ctx.shadowBlur = 38;
-            ctx.strokeStyle = 'rgba(168, 85, 247, 0.9)';
-            ctx.lineWidth = 14;
-            ctx.beginPath();
-            ctx.arc(0, 0, 140, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.restore();
-
-            ctx.save();
-            ctx.translate(256, 210);
-            ctx.shadowColor = 'rgba(56, 189, 248, 0.35)';
-            ctx.shadowBlur = 22;
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.10)';
-            ctx.beginPath();
-            ctx.arc(0, 0, 88, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-
-            if (nick) {
-                ctx.save();
-                ctx.globalAlpha = 0.95;
-                ctx.shadowColor = 'rgba(0,0,0,0.35)';
-                ctx.shadowBlur = 16;
-                ctx.fillStyle = 'rgba(7,6,17,0.78)';
-                roundRect(ctx, 156, 330, 200, 44, 14);
-                ctx.fill();
-                ctx.strokeStyle = 'rgba(124,58,237,0.35)';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-                ctx.fillStyle = 'rgba(255,255,255,0.9)';
-                ctx.font = '800 18px Inter, system-ui, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(nick, 256, 352);
-                ctx.restore();
-            }
-
-            ctx.save();
-            ctx.shadowColor = 'rgba(0,0,0,0.7)';
-            ctx.shadowBlur = 20;
-            ctx.textAlign = 'center';
-            ctx.fillStyle = 'white';
-            ctx.font = '900 44px Inter, system-ui, sans-serif';
-            ctx.fillText(topText, 256, 410);
-
-            const grad = ctx.createLinearGradient(140, 0, 372, 0);
-            grad.addColorStop(0, '#f472b6');
-            grad.addColorStop(1, '#38bdf8');
-            ctx.fillStyle = grad;
-            ctx.font = '900 86px Inter, system-ui, sans-serif';
-            ctx.fillText(bottomText, 256, 490);
-            ctx.restore();
-        }
-
-        function downloadPng() {
-            if (!canvas) return;
-            const a = document.createElement('a');
-            a.download = `hardcode_${(bottomTextEl?.value || 'icon').toLowerCase()}.png`;
-            a.href = canvas.toDataURL('image/png');
-            a.click();
-        }
-
-        [topTextEl, bottomTextEl, nicknameEl].forEach((el) => el && el.addEventListener('input', drawIcon));
-        if (downloadBtn) downloadBtn.addEventListener('click', downloadPng);
-        drawIcon();
-
-        // --- TRANSLATOR ---
-        const source = document.getElementById('source');
-        const result = document.getElementById('result');
-        const translateBtn = document.getElementById('translateBtn');
-        const copyBtn = document.getElementById('copyBtn');
-        const langPL = document.getElementById('langPL');
-        const langEN = document.getElementById('langEN');
-
-        let from = 'pl';
-        function setLang(next) {
-            from = next;
-            if (from === 'pl') {
-                langPL?.classList.add('tool-tab-active');
-                langEN?.classList.remove('tool-tab-active');
-            } else {
-                langEN?.classList.add('tool-tab-active');
-                langPL?.classList.remove('tool-tab-active');
-            }
-        }
-        langPL?.addEventListener('click', () => setLang('pl'));
-        langEN?.addEventListener('click', () => setLang('en'));
-
-        const dictEnToPl = new Map([
-            ['welcome', 'witaj'],
-            ['goodbye', 'żegnaj'],
-            ['ticket', 'zgłoszenie'],
-            ['tickets', 'zgłoszenia'],
-            ['support', 'pomoc'],
-            ['settings', 'ustawienia'],
-            ['enabled', 'włączone'],
-            ['disabled', 'wyłączone'],
-            ['role', 'rola'],
-            ['roles', 'role'],
-            ['channel', 'kanał'],
-            ['channels', 'kanały'],
-            ['message', 'wiadomość'],
-            ['messages', 'wiadomości'],
-            ['admin', 'admin'],
-            ['moderation', 'moderacja'],
-            ['warning', 'ostrzeżenie'],
-            ['warnings', 'ostrzeżenia'],
-            ['ban', 'ban'],
-            ['mute', 'mute'],
-            ['unmute', 'odcisz'],
-            ['logs', 'logi'],
-            ['dashboard', 'panel'],
-            ['premium', 'premium'],
-            ['free', 'darmowe'],
-            ['error', 'błąd'],
-            ['success', 'sukces'],
-            ['required', 'wymagane'],
-            ['access', 'dostęp'],
-            ['login', 'zaloguj'],
-            ['discord', 'discord']
-        ]);
-
-        function protectTokens(input) {
-            const tokens = [];
-            const protectedText = input.replace(/(\{[^}]+\}|&[0-9a-fk-or])/gi, (m) => {
-                const id = tokens.length;
-                tokens.push(m);
-                return `__TOK${id}__`;
-            });
-            return { protectedText, tokens };
-        }
-
-        function restoreTokens(input, tokens) {
-            return input.replace(/__TOK(\d+)__/g, (_, n) => tokens[Number(n)] ?? '');
-        }
-
-        function translateLooseText(text) {
-            const parts = text.split(/(\s+|[,:.()\"'\\[\\]{}<>!?-]+)/);
-            const out = parts.map((p) => {
-                const key = p.toLowerCase();
-                if (!/^[a-z]+$/.test(key)) return p;
-                return dictEnToPl.get(key) ?? p;
-            });
-            return out.join('');
-        }
-
-        function translateAll() {
-            if (!source || !result) return;
-            const raw = source.value || '';
-            if (!raw.trim()) {
-                result.value = '';
-                return;
-            }
-            if (from === 'pl') {
-                result.value = raw;
-                return;
-            }
-            const { protectedText, tokens } = protectTokens(raw);
-            const translated = translateLooseText(protectedText);
-            result.value = restoreTokens(translated, tokens);
-        }
-
-        async function copyResult() {
-            if (!result?.value) return;
+        const copyBtn = document.getElementById('copyIp');
+        const ipEl = document.getElementById('serverIp');
+        copyBtn?.addEventListener('click', async () => {
+            const ip = ipEl?.textContent || '';
             try {
-                await navigator.clipboard.writeText(result.value);
-                if (copyBtn) copyBtn.textContent = 'Skopiowano';
-                setTimeout(() => copyBtn && (copyBtn.textContent = 'Kopiuj wynik'), 1000);
+                await navigator.clipboard.writeText(ip);
+                copyBtn.textContent = 'Skopiowano!';
+                setTimeout(() => { copyBtn.textContent = 'Kopiuj IP'; }, 1500);
             } catch {
-                result.focus();
-                result.select();
-                document.execCommand('copy');
+                copyBtn.textContent = 'Zaznacz IP';
             }
-        }
-
-        translateBtn?.addEventListener('click', translateAll);
-        copyBtn?.addEventListener('click', copyResult);
-        source?.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'enter') translateAll();
         });
-
-        // --- GUIKOD (embed JSON) ---
-        const embedTitle = document.getElementById('embedTitle');
-        const embedDesc = document.getElementById('embedDesc');
-        const embedColor = document.getElementById('embedColor');
-        const embedBtnText = document.getElementById('embedBtnText');
-        const embedBtnUrl = document.getElementById('embedBtnUrl');
-        const embedOut = document.getElementById('embedOut');
-        const embedCopyBtn = document.getElementById('embedCopyBtn');
-        const embedResetBtn = document.getElementById('embedResetBtn');
-
-        function safeHexToInt(hex) {
-            const cleaned = (hex || '').trim().replace('#', '');
-            if (!/^[0-9a-fA-F]{6}$/.test(cleaned)) return 0x7c3aed;
-            return parseInt(cleaned, 16);
-        }
-
-        function buildEmbedJson() {
-            const payload = {
-                embeds: [
-                    {
-                        title: embedTitle?.value || '',
-                        description: embedDesc?.value || '',
-                        color: safeHexToInt(embedColor?.value),
-                        footer: { text: 'HardCode — Kreator' }
-                    }
-                ],
-                components: [
-                    {
-                        type: 1,
-                        components: [
-                            {
-                                type: 2,
-                                style: 5,
-                                label: embedBtnText?.value || 'Link',
-                                url: embedBtnUrl?.value || 'https://discord.gg/kFYyYj5YP9'
-                            }
-                        ]
-                    }
-                ]
-            };
-            if (embedOut) embedOut.value = JSON.stringify(payload, null, 2);
-        }
-
-        function resetEmbed() {
-            if (!embedTitle || !embedDesc || !embedColor || !embedBtnText || !embedBtnUrl) return;
-            embedTitle.value = 'HardCode — ogłoszenie';
-            embedDesc.value = 'Witaj! Skorzystaj z kreatora narzędzi na stronie.';
-            embedColor.value = '#7c3aed';
-            embedBtnText.value = 'Dołącz na Discord';
-            embedBtnUrl.value = 'https://discord.gg/kFYyYj5YP9';
-            buildEmbedJson();
-        }
-
-        async function copyEmbedJson() {
-            if (!embedOut?.value) return;
-            try {
-                await navigator.clipboard.writeText(embedOut.value);
-                if (embedCopyBtn) embedCopyBtn.textContent = 'Skopiowano';
-                setTimeout(() => embedCopyBtn && (embedCopyBtn.textContent = 'Kopiuj JSON'), 1000);
-            } catch {
-                embedOut.focus();
-                embedOut.select();
-                document.execCommand('copy');
-            }
-        }
-
-        [embedTitle, embedDesc, embedColor, embedBtnText, embedBtnUrl].forEach((el) => el?.addEventListener('input', buildEmbedJson));
-        embedCopyBtn?.addEventListener('click', copyEmbedJson);
-        embedResetBtn?.addEventListener('click', resetEmbed);
-        buildEmbedJson();
-
-        // --- GUITXT ---
-        const txtTemplate = document.getElementById('txtTemplate');
-        const txtServer = document.getElementById('txtServer');
-        const txtDiscord = document.getElementById('txtDiscord');
-        const txtOut = document.getElementById('txtOut');
-        const txtCopyBtn = document.getElementById('txtCopyBtn');
-        const txtRegenerateBtn = document.getElementById('txtRegenerateBtn');
-
-        const templates = {
-            welcome: ({ server, discord }) =>
-                `👋 Witaj {user} na **${server}**!\n\n- Zapoznaj się z regulaminem\n- Otwórz ticket, jeśli potrzebujesz pomocy\n\nDiscord: ${discord}`,
-            rules: ({ server }) =>
-                `📌 Regulamin — **${server}**\n1) Szanuj innych.\n2) Zakaz spamu.\n3) Zakaz scamów.\n4) Administracja ma ostatnie słowo.`,
-            recruit: ({ discord }) =>
-                `🧑‍💻 Rekrutacja\n\nSzukamy osób do ekipy.\nNapisz w ticketach: wiek, doświadczenie, dostępność.\n\nDiscord: ${discord}`,
-            ticket: () =>
-                `🎫 Support / Ticket\n\nKliknij odpowiednią reakcję / przycisk i opisz problem.\nProsimy o: screeny, ID użytkownika, szczegóły.`,
-            announce: ({ server }) =>
-                `📣 Ogłoszenie — **${server}**\n\nTreść ogłoszenia tutaj...\n@everyone`
-        };
-
-        function generateTxt() {
-            if (!txtOut || !txtTemplate) return;
-            const server = txtServer?.value || 'HardCode';
-            const discord = txtDiscord?.value || 'https://discord.gg/kFYyYj5YP9';
-            const fn = templates[txtTemplate.value] || templates.welcome;
-            txtOut.value = fn({ server, discord });
-        }
-
-        async function copyTxt() {
-            if (!txtOut?.value) return;
-            try {
-                await navigator.clipboard.writeText(txtOut.value);
-                if (txtCopyBtn) txtCopyBtn.textContent = 'Skopiowano';
-                setTimeout(() => txtCopyBtn && (txtCopyBtn.textContent = 'Kopiuj tekst'), 1000);
-            } catch {
-                txtOut.focus();
-                txtOut.select();
-                document.execCommand('copy');
-            }
-        }
-
-        txtTemplate?.addEventListener('change', generateTxt);
-        txtServer?.addEventListener('input', generateTxt);
-        txtDiscord?.addEventListener('input', generateTxt);
-        txtCopyBtn?.addEventListener('click', copyTxt);
-        txtRegenerateBtn?.addEventListener('click', generateTxt);
-        generateTxt();
-
-        // --- HEX ---
-        const hexC1 = document.getElementById('hexC1');
-        const hexC2 = document.getElementById('hexC2');
-        const hexDir = document.getElementById('hexDir');
-        const hexOut = document.getElementById('hexOut');
-        const hexPreview = document.getElementById('hexPreview');
-        const hexCopyBtn = document.getElementById('hexCopyBtn');
-        const hexRandomBtn = document.getElementById('hexRandomBtn');
-
-        function randomHex() {
-            const n = Math.floor(Math.random() * 0xffffff);
-            return `#${n.toString(16).padStart(6, '0')}`;
-        }
-
-        function updateHex() {
-            if (!hexC1 || !hexC2 || !hexDir || !hexOut) return;
-            const css = `linear-gradient(${hexDir.value}, ${hexC1.value}, ${hexC2.value})`;
-            hexOut.value = css;
-            if (hexPreview) hexPreview.style.background = css;
-        }
-
-        async function copyHexCss() {
-            if (!hexOut?.value) return;
-            try {
-                await navigator.clipboard.writeText(hexOut.value);
-                if (hexCopyBtn) hexCopyBtn.textContent = 'Skopiowano';
-                setTimeout(() => hexCopyBtn && (hexCopyBtn.textContent = 'Kopiuj CSS'), 1000);
-            } catch {
-                hexOut.focus();
-                hexOut.select();
-                document.execCommand('copy');
-            }
-        }
-
-        function randomizeHex() {
-            if (!hexC1 || !hexC2) return;
-            hexC1.value = randomHex();
-            hexC2.value = randomHex();
-            updateHex();
-        }
-
-        [hexC1, hexC2, hexDir].forEach((el) => el?.addEventListener('input', updateHex));
-        hexCopyBtn?.addEventListener('click', copyHexCss);
-        hexRandomBtn?.addEventListener('click', randomizeHex);
-        updateHex();
-
-        // --- SZAFKA ---
-        const lockerTitle = document.getElementById('lockerTitle');
-        const lockerBody = document.getElementById('lockerBody');
-        const lockerSaveBtn = document.getElementById('lockerSaveBtn');
-        const lockerClearBtn = document.getElementById('lockerClearBtn');
-        const lockerList = document.getElementById('lockerList');
-        const lockerDeleteAllBtn = document.getElementById('lockerDeleteAllBtn');
-
-        const LOCKER_KEY = 'hardcode_locker_v1';
-        function loadNotes() {
-            try {
-                return JSON.parse(localStorage.getItem(LOCKER_KEY) || '[]');
-            } catch {
-                return [];
-            }
-        }
-        function saveNotes(notes) {
-            localStorage.setItem(LOCKER_KEY, JSON.stringify(notes));
-        }
-        function renderNotes() {
-            if (!lockerList) return;
-            const notes = loadNotes();
-            lockerList.innerHTML = '';
-            if (!notes.length) {
-                const empty = document.createElement('div');
-                empty.className = 'tool-hint';
-                empty.textContent = 'Brak notatek. Zapisz pierwszą po lewej.';
-                lockerList.appendChild(empty);
-                return;
-            }
-            notes.slice().reverse().forEach((n) => {
-                const item = document.createElement('div');
-                item.className = 'locker-item';
-                item.innerHTML = `<div class="locker-item-title">${n.title}</div><div class="locker-item-body">${n.body}</div>`;
-                item.addEventListener('click', () => {
-                    if (lockerTitle) lockerTitle.value = n.title;
-                    if (lockerBody) lockerBody.value = n.body;
-                });
-                lockerList.appendChild(item);
-            });
-        }
-        function saveNote() {
-            if (!lockerTitle || !lockerBody) return;
-            const note = {
-                id: crypto?.randomUUID ? crypto.randomUUID() : String(Date.now()),
-                title: (lockerTitle.value || 'Notatka').trim(),
-                body: (lockerBody.value || '').trim(),
-                at: Date.now()
-            };
-            const notes = loadNotes();
-            notes.push(note);
-            saveNotes(notes);
-            renderNotes();
-        }
-        function clearNote() {
-            if (lockerBody) lockerBody.value = '';
-        }
-        function deleteAllNotes() {
-            saveNotes([]);
-            renderNotes();
-        }
-        lockerSaveBtn?.addEventListener('click', saveNote);
-        lockerClearBtn?.addEventListener('click', clearNote);
-        lockerDeleteAllBtn?.addEventListener('click', deleteAllNotes);
-        renderNotes();
-
-        // --- KAPITALIK ---
-        const capsIn = document.getElementById('capsIn');
-        const capsOut = document.getElementById('capsOut');
-        const capsCopyBtn = document.getElementById('capsCopyBtn');
-        const capsClearBtn = document.getElementById('capsClearBtn');
-
-        function toTitleCase(s) {
-            return s.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-        }
-        function toAlternate(s) {
-            let i = 0;
-            return Array.from(s).map((ch) => {
-                if (!/[a-zA-ZąćęłńóśżźĄĆĘŁŃÓŚŻŹ]/.test(ch)) return ch;
-                const out = i % 2 === 0 ? ch.toLowerCase() : ch.toUpperCase();
-                i += 1;
-                return out;
-            }).join('');
-        }
-        function applyCaps(mode) {
-            if (!capsIn || !capsOut) return;
-            const s = capsIn.value || '';
-            if (mode === 'upper') capsOut.value = s.toUpperCase();
-            else if (mode === 'lower') capsOut.value = s.toLowerCase();
-            else if (mode === 'title') capsOut.value = toTitleCase(s);
-            else if (mode === 'alt') capsOut.value = toAlternate(s);
-        }
-        document.querySelectorAll('[data-caps]').forEach((b) => {
-            b.addEventListener('click', () => applyCaps(b.getAttribute('data-caps')));
-        });
-        async function copyCaps() {
-            if (!capsOut?.value) return;
-            try {
-                await navigator.clipboard.writeText(capsOut.value);
-                if (capsCopyBtn) capsCopyBtn.textContent = 'Skopiowano';
-                setTimeout(() => capsCopyBtn && (capsCopyBtn.textContent = 'Kopiuj'), 1000);
-            } catch {
-                capsOut.focus();
-                capsOut.select();
-                document.execCommand('copy');
-            }
-        }
-        capsCopyBtn?.addEventListener('click', copyCaps);
-        capsClearBtn?.addEventListener('click', () => {
-            if (capsIn) capsIn.value = '';
-            if (capsOut) capsOut.value = '';
-        });
-
-        // --- PREFIKSY ---
-        const prefixTag = document.getElementById('prefixTag');
-        const prefixName = document.getElementById('prefixName');
-        const prefixSep = document.getElementById('prefixSep');
-        const prefixColor = document.getElementById('prefixColor');
-        const prefixOut = document.getElementById('prefixOut');
-        const prefixPreview = document.getElementById('prefixPreview');
-        const prefixCopyBtn = document.getElementById('prefixCopyBtn');
-        const prefixGenBtn = document.getElementById('prefixGenBtn');
-
-        function genPrefix() {
-            if (!prefixOut || !prefixPreview) return;
-            const tag = (prefixTag?.value || 'VIP').toUpperCase();
-            const name = (prefixName?.value || 'użytkownik').trim();
-            const sep = prefixSep?.value || ':';
-            const dot = prefixColor?.value || '🟣';
-            const line = `${dot} [${tag}] ${name} ${sep} wiadomość...`;
-            prefixPreview.textContent = line;
-            prefixOut.value = line;
-        }
-        async function copyPrefix() {
-            if (!prefixOut?.value) return;
-            try {
-                await navigator.clipboard.writeText(prefixOut.value);
-                if (prefixCopyBtn) prefixCopyBtn.textContent = 'Skopiowano';
-                setTimeout(() => prefixCopyBtn && (prefixCopyBtn.textContent = 'Kopiuj'), 1000);
-            } catch {
-                prefixOut.focus();
-                prefixOut.select();
-                document.execCommand('copy');
-            }
-        }
-        [prefixTag, prefixName, prefixSep, prefixColor].forEach((el) => el?.addEventListener('input', genPrefix));
-        prefixGenBtn?.addEventListener('click', genPrefix);
-        prefixCopyBtn?.addEventListener('click', copyPrefix);
-        genPrefix();
-
-        // --- MOTD ---
-        const motdTitle = document.getElementById('motdTitle');
-        const motdBody = document.getElementById('motdBody');
-        const motdOut = document.getElementById('motdOut');
-        const motdGenBtn = document.getElementById('motdGenBtn');
-        const motdCopyBtn = document.getElementById('motdCopyBtn');
-        function genMotd() {
-            if (!motdOut) return;
-            const server = (txtServer?.value || 'HardCode');
-            const discord = (txtDiscord?.value || 'https://discord.gg/kFYyYj5YP9');
-            const title = (motdTitle?.value || '').replaceAll('{server}', server).replaceAll('{discord}', discord);
-            const body = (motdBody?.value || '').replaceAll('{server}', server).replaceAll('{discord}', discord);
-            motdOut.value = `${title}\n\n${body}`;
-        }
-        async function copyMotd() {
-            if (!motdOut?.value) return;
-            try { await navigator.clipboard.writeText(motdOut.value); } catch {}
-        }
-        motdGenBtn?.addEventListener('click', genMotd);
-        motdCopyBtn?.addEventListener('click', copyMotd);
-        [motdTitle, motdBody].forEach((el) => el?.addEventListener('input', genMotd));
-        genMotd();
-
-        // --- TITLES3D (stylizator unicode) ---
-        const t3dIn = document.getElementById('t3dIn');
-        const t3dOut = document.getElementById('t3dOut');
-        const t3dCopyBtn = document.getElementById('t3dCopyBtn');
-
-        const mapBold = (ch) => {
-            const a = 'abcdefghijklmnopqrstuvwxyz';
-            const A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            const boldA = '𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭'.toLowerCase(); // fallback
-            const boldMap = {
-                a:'𝗮',b:'𝗯',c:'𝗰',d:'𝗱',e:'𝗲',f:'𝗳',g:'𝗴',h:'𝗵',i:'𝗶',j:'𝗷',k:'𝗸',l:'𝗹',m:'𝗺',n:'𝗻',o:'𝗼',p:'𝗽',q:'𝗾',r:'𝗿',s:'𝘀',t:'𝘁',u:'𝘂',v:'𝘃',w:'𝘄',x:'𝘅',y:'𝘆',z:'𝘇',
-                A:'𝗔',B:'𝗕',C:'𝗖',D:'𝗗',E:'𝗘',F:'𝗙',G:'𝗚',H:'𝗛',I:'𝗜',J:'𝗝',K:'𝗞',L:'𝗟',M:'𝗠',N:'𝗡',O:'𝗢',P:'𝗣',Q:'𝗤',R:'𝗥',S:'𝗦',T:'𝗧',U:'𝗨',V:'𝗩',W:'𝗪',X:'𝗫',Y:'𝗬',Z:'𝗭'
-            };
-            return boldMap[ch] ?? ch;
-        };
-
-        function stylizeText(mode) {
-            if (!t3dIn || !t3dOut) return;
-            const s = t3dIn.value || '';
-            if (mode === 'bold') t3dOut.value = Array.from(s).map(mapBold).join('');
-            else if (mode === 'smallcaps') t3dOut.value = s.replace(/[a-z]/g, (c) => c.toUpperCase());
-            else if (mode === 'bubble') t3dOut.value = s.replace(/[a-zA-Z]/g, (c) => `(${c})`);
-        }
-        document.querySelectorAll('[data-t3d]').forEach((b) => b.addEventListener('click', () => stylizeText(b.getAttribute('data-t3d'))));
-        t3dCopyBtn?.addEventListener('click', async () => {
-            if (!t3dOut?.value) return;
-            try { await navigator.clipboard.writeText(t3dOut.value); } catch {}
-        });
-
-        // --- EMBED GRAPHIC (mini) ---
-        const egTitle = document.getElementById('egTitle');
-        const egDesc = document.getElementById('egDesc');
-        const egColor = document.getElementById('egColor');
-        const egOut = document.getElementById('egOut');
-        const egCopyBtn = document.getElementById('egCopyBtn');
-        const egGenBtn = document.getElementById('egGenBtn');
-        function genEg() {
-            if (!egOut) return;
-            const payload = { embeds: [{ title: egTitle?.value || '', description: egDesc?.value || '', color: safeHexToInt(egColor?.value) }] };
-            egOut.value = JSON.stringify(payload, null, 2);
-        }
-        egGenBtn?.addEventListener('click', genEg);
-        [egTitle, egDesc, egColor].forEach((el) => el?.addEventListener('input', genEg));
-        egCopyBtn?.addEventListener('click', async () => {
-            if (!egOut?.value) return;
-            try { await navigator.clipboard.writeText(egOut.value); } catch {}
-        });
-        genEg();
-
-        // --- TABLIST ---
-        const tabTitle = document.getElementById('tabTitle');
-        const tabItems = document.getElementById('tabItems');
-        const tabOut = document.getElementById('tabOut');
-        const tabGenBtn = document.getElementById('tabGenBtn');
-        const tabCopyBtn = document.getElementById('tabCopyBtn');
-        function genTab() {
-            if (!tabOut) return;
-            const title = tabTitle?.value || 'Role';
-            const items = (tabItems?.value || '').split('\n').map((l) => l.trim()).filter(Boolean);
-            tabOut.value = `**${title}**\n` + items.map((i) => `• ${i}`).join('\n');
-        }
-        tabGenBtn?.addEventListener('click', genTab);
-        tabCopyBtn?.addEventListener('click', async () => { if (tabOut?.value) try { await navigator.clipboard.writeText(tabOut.value); } catch {} });
-        [tabTitle, tabItems].forEach((el) => el?.addEventListener('input', genTab));
-        genTab();
-
-        // --- SIDEBAR ---
-        const sbIn = document.getElementById('sbIn');
-        const sbOut = document.getElementById('sbOut');
-        const sbGenBtn = document.getElementById('sbGenBtn');
-        const sbCopyBtn = document.getElementById('sbCopyBtn');
-        function genSb() {
-            if (!sbOut) return;
-            const lines = (sbIn?.value || '').split('\n');
-            const out = [];
-            for (const l of lines) {
-                const s = l.trim();
-                if (!s) continue;
-                if (s.startsWith('#')) out.push(`📁 ${s.replace(/^#+\s*/, '').toUpperCase()}`);
-                else if (s.startsWith('-')) out.push(`  #${s.replace(/^-+\s*/, '')}`);
-                else out.push(s);
-            }
-            sbOut.value = out.join('\n');
-        }
-        sbGenBtn?.addEventListener('click', genSb);
-        sbCopyBtn?.addEventListener('click', async () => { if (sbOut?.value) try { await navigator.clipboard.writeText(sbOut.value); } catch {} });
-        sbIn?.addEventListener('input', genSb);
-        genSb();
-
-        // --- IKONKI ---
-        const icoLetter = document.getElementById('icoLetter');
-        const icoBg = document.getElementById('icoBg');
-        const icoFg = document.getElementById('icoFg');
-        const icoShape = document.getElementById('icoShape');
-        const icoCanvas = document.getElementById('icoCanvas');
-        const icoDlBtn = document.getElementById('icoDlBtn');
-        const icoRedrawBtn = document.getElementById('icoRedrawBtn');
-        const icoCtx = icoCanvas ? icoCanvas.getContext('2d') : null;
-
-        function drawIco() {
-            if (!icoCtx || !icoCanvas) return;
-            const letter = (icoLetter?.value || 'S').slice(0, 2).toUpperCase();
-            const bg = icoBg?.value || '#7c3aed';
-            const fg = icoFg?.value || '#ffffff';
-            const shape = icoShape?.value || 'hex';
-            icoCtx.clearRect(0, 0, 512, 512);
-
-            icoCtx.fillStyle = '#070611';
-            icoCtx.fillRect(0, 0, 512, 512);
-
-            icoCtx.save();
-            icoCtx.translate(256, 256);
-            icoCtx.shadowColor = 'rgba(124,58,237,0.35)';
-            icoCtx.shadowBlur = 26;
-            icoCtx.fillStyle = bg;
-
-            if (shape === 'circle') {
-                icoCtx.beginPath();
-                icoCtx.arc(0, 0, 170, 0, Math.PI * 2);
-                icoCtx.fill();
-            } else if (shape === 'square') {
-                roundRect(icoCtx, -170, -170, 340, 340, 38);
-                icoCtx.fill();
-            } else {
-                // hex
-                icoCtx.beginPath();
-                const r = 175;
-                for (let i = 0; i < 6; i++) {
-                    const a = (Math.PI / 3) * i - Math.PI / 6;
-                    const x = Math.cos(a) * r;
-                    const y = Math.sin(a) * r;
-                    if (i === 0) icoCtx.moveTo(x, y); else icoCtx.lineTo(x, y);
-                }
-                icoCtx.closePath();
-                icoCtx.fill();
-            }
-
-            icoCtx.shadowBlur = 0;
-            icoCtx.fillStyle = fg;
-            icoCtx.font = '900 210px Inter, system-ui, sans-serif';
-            icoCtx.textAlign = 'center';
-            icoCtx.textBaseline = 'middle';
-            icoCtx.fillText(letter, 0, 10);
-            icoCtx.restore();
-        }
-
-        function dlIco() {
-            if (!icoCanvas) return;
-            const a = document.createElement('a');
-            a.download = `icon_${(icoLetter?.value || 'S').toLowerCase()}.png`;
-            a.href = icoCanvas.toDataURL('image/png');
-            a.click();
-        }
-
-        [icoLetter, icoBg, icoFg, icoShape].forEach((el) => el?.addEventListener('input', drawIco));
-        icoRedrawBtn?.addEventListener('click', drawIco);
-        icoDlBtn?.addEventListener('click', dlIco);
-        drawIco();
-
-        // --- PACKCREATOR ---
-        const packName = document.getElementById('packName');
-        const packDesc = document.getElementById('packDesc');
-        const packOut = document.getElementById('packOut');
-        const packDlBtn = document.getElementById('packDlBtn');
-        const packGenBtn = document.getElementById('packGenBtn');
-
-        function genPack() {
-            if (!packOut) return;
-            const payload = {
-                name: packName?.value || 'HardCode Pack',
-                description: packDesc?.value || '',
-                createdAt: new Date().toISOString(),
-                tools: {
-                    embed: embedOut?.value ? JSON.parse(embedOut.value) : null,
-                    txt: txtOut?.value || '',
-                    gradientCss: hexOut?.value || ''
-                }
-            };
-            packOut.value = JSON.stringify(payload, null, 2);
-        }
-        function dlPack() {
-            if (!packOut?.value) genPack();
-            const blob = new Blob([packOut.value], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'hardcode_pack.json';
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-        [packName, packDesc].forEach((el) => el?.addEventListener('input', genPack));
-        packGenBtn?.addEventListener('click', genPack);
-        packDlBtn?.addEventListener('click', dlPack);
-        genPack();
-
-        // start
-        setActiveTool('discordbotstudio');
     </script>
-
 </body>
 </html>
