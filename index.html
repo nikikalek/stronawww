@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FootballMC — Serwer Minecraft</title>
-    <meta name="description" content="FootballMC — serwer Minecraft Lifesteal. Czasami eventy piłkarskie. Dołącz i graj!">
+    <title>CYWILIZACJA — Anarchia FFA</title>
+    <meta name="description" content="CYWILIZACJA — serwer Minecraft Anarchia FFA. Bez reguł, pełne PvP. Dołącz teraz!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,15 +17,13 @@
     <header class="nav">
         <div class="container nav-inner">
             <a href="index.html" class="logo">
-                <span class="logo-icon">⚽</span>
-                Football<span class="accent">MC</span>
+                <span class="logo-icon">⚔</span>
+                CYWILIZACJA
             </a>
             <nav class="nav-links" aria-label="Menu">
                 <a href="#start">Start</a>
-                <a href="#tryb">Tryb gry</a>
+                <a href="#tryb">Anarchia</a>
                 <a href="#dolacz">Dołącz</a>
-                <a href="#rangi">Rangi</a>
-                <a href="#sklep">Sklep</a>
                 <a href="regulamin.html">Regulamin</a>
             </nav>
             <div class="nav-cta-wrap">
@@ -37,10 +35,8 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="#start">Start</a>
-        <a href="#tryb">Tryb gry</a>
+        <a href="#tryb">Anarchia</a>
         <a href="#dolacz">Dołącz</a>
-        <a href="#rangi">Rangi</a>
-        <a href="#sklep">Sklep</a>
         <a href="regulamin.html">Regulamin</a>
         <a href="#dolacz" class="btn btn-primary" style="margin-top:8px;text-align:center;">Graj teraz</a>
     </div>
@@ -48,86 +44,93 @@
     <section class="hero" id="start">
         <div class="container hero-grid">
             <div class="hero-content">
-                <h1><span class="accent">Lifesteal</span> na serwerze FootballMC</h1>
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Anarchia FFA · Online
+                </div>
+                <h1>Cywilizacja</h1>
+                <p class="hero-tag">Anarchia FFA</p>
                 <p class="hero-lead">
-                    Główny tryb to Lifesteal — kradnij serca, walcz o przetrwanie i buduj potęgę.
-                    Od czasu do czasu czekają eventy piłkarskie — wtedy wchodzi na boisko cała ekipa.
+                    Zero claimów, zero ochrony — wchodzisz i walczysz o przetrwanie.
+                    TNT, grief, trap, FFA na całej mapie. Tylko najsilniejsi zostają.
                 </p>
                 <div class="hero-btns">
-                    <a href="#dolacz" class="btn btn-primary">Zacznij grać</a>
-                    <a href="#rangi" class="btn btn-outline">Zobacz rangi</a>
+                    <a href="#dolacz" class="btn btn-primary">⚔ Zacznij grać</a>
+                    <a href="#tryb" class="btn btn-outline">Co to anarchia?</a>
                 </div>
                 <div class="ip-card">
                     <div>
-                        <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">IP serwera</div>
-                        <code id="serverIp">play.footballmc.pl</code>
+                        <div class="ip-label">Adres serwera</div>
+                        <code id="serverIp">CYWILIZACJA-AkhQ.aternos.me:27807</code>
                     </div>
                     <button type="button" class="ip-copy" id="copyIp">Kopiuj IP</button>
                 </div>
+                <p class="aternos-note">Serwer na Aternos — właściciel musi go włączyć, żebyś mógł wejść.</p>
             </div>
 
             <div class="hero-visual" aria-hidden="true">
-                <div class="hero-shape"></div>
-                <svg class="hero-character" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
-                    <!-- prosta postać w stylu Minecraft + korona -->
-                    <rect x="70" y="20" width="60" height="55" fill="#e8c4a0" rx="4"/>
-                    <rect x="55" y="8" width="90" height="22" fill="#f5c518" rx="3"/>
-                    <rect x="60" y="4" width="18" height="18" fill="#f5c518"/>
-                    <rect x="122" y="4" width="18" height="18" fill="#f5c518"/>
-                    <rect x="78" y="38" width="12" height="8" fill="#1a1a1a"/>
-                    <rect x="110" y="38" width="12" height="8" fill="#1a1a1a"/>
-                    <rect x="62" y="75" width="76" height="90" fill="#f5c518"/>
-                    <rect x="50" y="85" width="22" height="70" fill="#d4a80f"/>
-                    <rect x="128" y="85" width="22" height="70" fill="#d4a80f"/>
-                    <rect x="68" y="165" width="28" height="55" fill="#2d5a27"/>
-                    <rect x="104" y="165" width="28" height="55" fill="#2d5a27"/>
-                    <rect x="62" y="218" width="32" height="12" fill="#1a1a1a"/>
-                    <rect x="106" y="218" width="32" height="12" fill="#1a1a1a"/>
-                    <!-- piłka -->
-                    <circle cx="155" cy="200" r="22" fill="#fff"/>
-                    <path d="M155 178 L165 195 L155 212 L145 195 Z" fill="#1a1a1a" opacity="0.3"/>
-                    <rect x="148" y="188" width="14" height="14" fill="none" stroke="#1a1a1a" stroke-width="2"/>
-                </svg>
+                <div class="hero-glow"></div>
+                <div class="hero-emblem">
+                    <span class="hero-emblem-letter">C</span>
+                    <span class="hero-emblem-sub">FFA</span>
+                </div>
+                <span class="float-badge top">🧨 Bez limitów</span>
+                <span class="float-badge bottom">⚔ Free For All</span>
             </div>
         </div>
     </section>
 
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <span>⚔ <strong>FFA</strong> — każdy przeciw każdemu</span>
+            <span>🧨 <strong>Bez claimów</strong> — grief dozwolony</span>
+            <span>🔥 <strong>Anarchia</strong> — brak SafeZone</span>
+            <span>💀 <strong>Hardcore</strong> — nie licz na litość</span>
+            <span>🌍 <strong>Survival</strong> — buduj albo gin</span>
+            <span>⚔ <strong>FFA</strong> — każdy przeciw każdemu</span>
+            <span>🧨 <strong>Bez claimów</strong> — grief dozwolony</span>
+            <span>🔥 <strong>Anarchia</strong> — brak SafeZone</span>
+            <span>💀 <strong>Hardcore</strong> — nie licz na litość</span>
+            <span>🌍 <strong>Survival</strong> — buduj albo gin</span>
+        </div>
+    </div>
+
     <section class="section" id="tryb">
         <div class="container">
             <div class="section-head">
-                <h2>Co znajdziesz na <span class="accent">FootballMC</span>?</h2>
-                <p>Na co dzień Lifesteal — a piłka pojawia się tylko na specjalnych eventach.</p>
+                <h2>Tryb <span class="accent">Anarchia FFA</span></h2>
+                <p>Jak na najlepszych serwerach anarchii — wolność bez hamulców.</p>
             </div>
             <div class="features">
                 <article class="feature">
-                    <div class="feature-icon">❤️</div>
-                    <h3>Lifesteal</h3>
-                    <p>Główny tryb serwera — zabijaj graczy, zdobywaj serca i ryzykuj wszystko, żeby zostać na szczycie.</p>
-                </article>
-                <article class="feature">
                     <div class="feature-icon">⚔️</div>
-                    <h3>PvP i rywalizacja</h3>
-                    <p>Walki, sojusze i podboje — każda decyzja może kosztować serce albo dać przewagę.</p>
+                    <h3>Free For All</h3>
+                    <p>PvP wszędzie i zawsze. Nie ma bezpiecznych stref — każdy może Cię zabić w każdej chwili.</p>
                 </article>
                 <article class="feature">
-                    <div class="feature-icon">⚽</div>
-                    <h3>Eventy piłkarskie</h3>
-                    <p>Czasami na serwerze — mecze, drużyny i zabawa w klimacie piłki. Daty na Discordzie.</p>
+                    <div class="feature-icon">🧨</div>
+                    <h3>Pełna wolność</h3>
+                    <p>TNT, grief, kradzież, trap — wszystko dozwolone. Liczy się tylko to, czy wytrzymasz.</p>
                 </article>
                 <article class="feature">
-                    <div class="feature-icon">💰</div>
-                    <h3>Ekonomia</h3>
-                    <p>Handluj, zbieraj zasoby i wzmacniaj się pod Lifesteal.</p>
+                    <div class="feature-icon">🚫</div>
+                    <h3>Zero claimów</h3>
+                    <p>Żadnych regionów ani ochrony bazy. Twoja budowla istnieje, dopóki ktoś ją nie zniszczy.</p>
                 </article>
                 <article class="feature">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Anty-cheat</h3>
-                    <p>Fair play na pierwszym miejscu — cheaty nie mają u nas szans.</p>
+                    <div class="feature-icon">💀</div>
+                    <h3>Hardcore vibe</h3>
+                    <p>Logujesz się na własne ryzyko. Stracisz eq? To część anarchii — wracaj silniejszy.</p>
                 </article>
                 <article class="feature">
-                    <div class="feature-icon">📢</div>
-                    <h3>Ogłoszenia</h3>
-                    <p>Eventy piłkarskie, aktualizacje i konkursy — śledź Discord, żeby nic nie przegapić.</p>
+                    <div class="feature-icon">🌍</div>
+                    <h3>Otwarty świat</h3>
+                    <p>Eksploruj, farm, buduj fort — albo poluj na graczy z lepszym wyposażeniem.</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Cywilizacja</h3>
+                    <p>Serwer kolegi — mała ekipa, duża energia. Wbijaj i pokaż, kto tu rządzi.</p>
                 </article>
             </div>
         </div>
@@ -137,87 +140,36 @@
         <div class="container">
             <div class="section-head">
                 <h2>Jak dołączyć?</h2>
-                <p>Trzy proste kroki i jesteś na serwerze.</p>
+                <p>Skopiuj IP, odpal Minecraft Java i wjedź na serwer.</p>
             </div>
             <div class="steps">
                 <div class="step">
                     <div class="step-num">1</div>
                     <h3>Minecraft Java</h3>
-                    <p>Potrzebujesz wersji Java (1.20+). Bedrock — sprawdź Discord.</p>
+                    <p>Uruchom grę w wersji zgodnej z serwerem (najczęściej 1.20+).</p>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
-                    <h3>IP serwera</h3>
-                    <p>Wklej IP w Multiplayer → Dodaj serwer i połącz się.</p>
+                    <h3>Dodaj serwer</h3>
+                    <p>Multiplayer → Dodaj serwer → wklej:<br><code>CYWILIZACJA-AkhQ.aternos.me:27807</code></p>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <h3>Graj!</h3>
-                    <p>Wejdź na Discord po pomoc, regulamin i info o eventach piłkarskich.</p>
+                    <h3>Wbijaj!</h3>
+                    <p>Serwer musi być włączony na Aternos. Jak nie działa — napisz do właściciela.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="rangi">
+    <section class="section">
         <div class="container">
-            <div class="section-head">
-                <h2>Rangi <span class="accent">VIP</span></h2>
-                <p>Wspieraj serwer rangą — im wyżej, tym więcej w grze (szczegóły ustalicie na Discordzie).</p>
-            </div>
-            <div class="ranks-grid">
-                <article class="rank-card rank-vip">
-                    <div class="rank-badge">VIP</div>
-                    <div class="rank-foot">
-                        <span class="rank-price">5 zł</span>
-                        <a href="#sklep" class="btn btn-outline btn-sm">Kup</a>
-                    </div>
-                </article>
-
-                <article class="rank-card rank-svip">
-                    <div class="rank-badge">SVIP</div>
-                    <div class="rank-foot">
-                        <span class="rank-price">8 zł</span>
-                        <a href="#sklep" class="btn btn-outline btn-sm">Kup</a>
-                    </div>
-                </article>
-
-                <article class="rank-card rank-gvip rank-popular">
-                    <span class="rank-popular-label">Popularne</span>
-                    <div class="rank-badge">GVIP</div>
-                    <div class="rank-foot">
-                        <span class="rank-price">12 zł</span>
-                        <a href="#sklep" class="btn btn-primary btn-sm">Kup</a>
-                    </div>
-                </article>
-
-                <article class="rank-card rank-mvip">
-                    <div class="rank-badge">MVIP</div>
-                    <div class="rank-foot">
-                        <span class="rank-price">18 zł</span>
-                        <a href="#sklep" class="btn btn-outline btn-sm">Kup</a>
-                    </div>
-                </article>
-
-                <article class="rank-card rank-ogvip">
-                    <div class="rank-badge">OG</div>
-                    <div class="rank-foot">
-                        <span class="rank-price">25 zł</span>
-                        <a href="#sklep" class="btn btn-outline btn-sm">Kup</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="sklep" style="background: var(--bg-2);">
-        <div class="container">
-            <div class="shop-banner">
+            <div class="cta-banner">
                 <div>
-                    <h2>Sklep serwera</h2>
-                    <p>Kup rangę w sklepie (link wkrótce) lub napisz na Discord — bez obietnic na stronie, dopiero jak ustalicie bonusy w grze.</p>
+                    <h2>Gotowy na anarchię?</h2>
+                    <p>Skopiuj IP, dołącz do gry i pokaż, że dasz radę w FFA. Bez reguł — tylko skill.</p>
                 </div>
-                <a href="#rangi" class="btn btn-primary">Porównaj rangi</a>
+                <button type="button" class="btn btn-primary" id="copyIp2">Kopiuj IP serwera</button>
             </div>
         </div>
     </section>
@@ -225,35 +177,36 @@
     <footer class="footer">
         <div class="container">
             <a href="index.html" class="logo">
-                <span class="logo-icon">⚽</span>
-                Football<span class="accent">MC</span>
+                <span class="logo-icon">⚔</span>
+                CYWILIZACJA
             </a>
-            <p>&copy; 2026 FootballMC — nie jest powiązany z Mojang AB.</p>
+            <p>&copy; 2026 Cywilizacja — nie jest powiązany z Mojang AB.</p>
         </div>
     </footer>
 
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn?.addEventListener('click', () => {
-            mobileMenu?.classList.toggle('open');
-        });
+        menuBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('open'));
         mobileMenu?.querySelectorAll('a').forEach((a) => {
             a.addEventListener('click', () => mobileMenu.classList.remove('open'));
         });
 
-        const copyBtn = document.getElementById('copyIp');
-        const ipEl = document.getElementById('serverIp');
-        copyBtn?.addEventListener('click', async () => {
-            const ip = ipEl?.textContent || '';
+        const ip = 'CYWILIZACJA-AkhQ.aternos.me:27807';
+
+        async function copyIp(btn, okText) {
             try {
                 await navigator.clipboard.writeText(ip);
-                copyBtn.textContent = 'Skopiowano!';
-                setTimeout(() => { copyBtn.textContent = 'Kopiuj IP'; }, 1500);
+                const prev = btn.textContent;
+                btn.textContent = okText;
+                setTimeout(() => { btn.textContent = prev; }, 1500);
             } catch {
-                copyBtn.textContent = 'Zaznacz IP';
+                btn.textContent = 'Zaznacz IP ręcznie';
             }
-        });
+        }
+
+        document.getElementById('copyIp')?.addEventListener('click', (e) => copyIp(e.target, 'Skopiowano!'));
+        document.getElementById('copyIp2')?.addEventListener('click', (e) => copyIp(e.target, 'Skopiowano!'));
     </script>
 </body>
 </html>
