@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYWILIZACJA — Anarchia FFA</title>
-    <meta name="description" content="CYWILIZACJA — serwer Minecraft Anarchia FFA. Bez reguł, pełne PvP. Dołącz teraz!">
+    <title>Kancelaria Prawna — Emergency Hamburg</title>
+    <meta name="description" content="Adwokat damiankalek123 na Emergency Hamburg (Roblox). Za 500$ będę Twoim adwokatem. Umów konsultację na Discordzie.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="kancelaria.css">
 </head>
 <body>
 
@@ -17,17 +17,17 @@
     <header class="nav">
         <div class="container nav-inner">
             <a href="index.html" class="logo">
-                <span class="logo-icon">⚔</span>
-                CYWILIZACJA
+                <span class="logo-icon">⚖</span>
+                Kancelaria Prawna
             </a>
             <nav class="nav-links" aria-label="Menu">
                 <a href="#start">Start</a>
-                <a href="#tryb">Anarchia</a>
-                <a href="#dolacz">Dołącz</a>
-                <a href="regulamin.html">Regulamin</a>
+                <a href="#uslugi">Usługi</a>
+                <a href="#jak">Jak to działa</a>
+                <a href="#kontakt">Kontakt</a>
             </nav>
             <div class="nav-cta-wrap">
-                <a href="#dolacz" class="nav-cta">Graj teraz</a>
+                <a href="https://discord.gg/7cSy8CDt9N" target="_blank" rel="noopener noreferrer" class="nav-cta">Umów konsultację</a>
             </div>
             <button class="menu-btn" type="button" id="menuBtn" aria-label="Menu">☰</button>
         </div>
@@ -35,141 +35,102 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="#start">Start</a>
-        <a href="#tryb">Anarchia</a>
-        <a href="#dolacz">Dołącz</a>
-        <a href="regulamin.html">Regulamin</a>
-        <a href="#dolacz" class="btn btn-primary" style="margin-top:8px;text-align:center;">Graj teraz</a>
+        <a href="#uslugi">Usługi</a>
+        <a href="#jak">Jak to działa</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="https://discord.gg/7cSy8CDt9N" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:8px;text-align:center;">Umów konsultację</a>
     </div>
 
     <section class="hero" id="start">
         <div class="container hero-grid">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    Anarchia FFA · Online
-                </div>
-                <h1>Cywilizacja</h1>
-                <p class="hero-tag">Anarchia FFA</p>
+                <span class="hero-badge">Emergency Hamburg · Roblox · RP</span>
+                <h1>Twoja <em>kancelaria prawna</em> w grze</h1>
                 <p class="hero-lead">
-                    Zero claimów, zero ochrony — wchodzisz i walczysz o przetrwanie.
-                    TNT, grief, trap, FFA na całej mapie. Tylko najsilniejsi zostają.
+                    Jestem adwokatem na Emergency Hamburg. Potrzebujesz obrony w sądzie,
+                    reprezentacji albo porady prawnej w RP? Pomogę Ci przejść przez sprawę.
                 </p>
+                <div class="roblox-nick">
+                    <span>Nick na Roblox:</span>
+                    <strong>damiankalek123</strong>
+                </div>
+                <div class="price-box">
+                    <span class="price-label">Cena usługi</span>
+                    <span class="price-value">500$</span>
+                    <span class="price-desc">na Emergency Hamburg — będę Twoim adwokatem</span>
+                </div>
                 <div class="hero-btns">
-                    <a href="#dolacz" class="btn btn-primary">⚔ Zacznij grać</a>
-                    <a href="#tryb" class="btn btn-outline">Co to anarchia?</a>
+                    <a href="https://discord.gg/7cSy8CDt9N" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Umów konsultację</a>
+                    <a href="#uslugi" class="btn btn-outline">Zobacz usługi</a>
                 </div>
-                <div class="ip-card">
-                    <div>
-                        <div class="ip-label">Adres serwera</div>
-                        <code id="serverIp">CYWILIZACJA-AkhQ.aternos.me:27807</code>
-                    </div>
-                    <button type="button" class="ip-copy" id="copyIp">Kopiuj IP</button>
-                </div>
-                <p class="aternos-note">Serwer na Aternos — jak nie działa, poczekaj chwilę i spróbuj ponownie.</p>
             </div>
 
-            <div class="hero-visual" aria-hidden="true">
-                <div class="hero-glow"></div>
-                <div class="hero-emblem">
-                    <span class="hero-emblem-letter">C</span>
-                    <span class="hero-emblem-sub">FFA</span>
-                </div>
-                <span class="float-badge top">🧨 Bez limitów</span>
-                <span class="float-badge bottom">⚔ Free For All</span>
+            <div class="hero-card">
+                <div class="hero-card-icon">⚖️</div>
+                <h2>damiankalek123</h2>
+                <p>Adwokat na Emergency Hamburg — obrona w sądzie, porady prawne i reprezentacja w RP na Roblox.</p>
             </div>
         </div>
     </section>
 
-    <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-            <span>⚔ <strong>FFA</strong> — każdy przeciw każdemu</span>
-            <span>🧨 <strong>Bez claimów</strong> — grief dozwolony</span>
-            <span>🔥 <strong>Anarchia</strong> — brak SafeZone</span>
-            <span>💀 <strong>Hardcore</strong> — nie licz na litość</span>
-            <span>🌍 <strong>Survival</strong> — buduj albo gin</span>
-            <span>⚔ <strong>FFA</strong> — każdy przeciw każdemu</span>
-            <span>🧨 <strong>Bez claimów</strong> — grief dozwolony</span>
-            <span>🔥 <strong>Anarchia</strong> — brak SafeZone</span>
-            <span>💀 <strong>Hardcore</strong> — nie licz na litość</span>
-            <span>🌍 <strong>Survival</strong> — buduj albo gin</span>
-        </div>
-    </div>
-
-    <section class="section" id="tryb">
+    <section class="section" id="uslugi">
         <div class="container">
             <div class="section-head">
-                <h2>Tryb <span class="accent">Anarchia FFA</span></h2>
-                <p>Jak na najlepszych serwerach anarchii — wolność bez hamulców.</p>
+                <h2>Co oferuję?</h2>
+                <p>Usługi prawne w ramach rozgrywki na Emergency Hamburg.</p>
             </div>
-            <div class="features">
-                <article class="feature">
-                    <div class="feature-icon">⚔️</div>
-                    <h3>Free For All</h3>
-                    <p>PvP wszędzie i zawsze. Nie ma bezpiecznych stref — każdy może Cię zabić w każdej chwili.</p>
+            <div class="services">
+                <article class="service">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Obrona w sądzie</h3>
+                    <p>Reprezentuję Cię podczas rozpraw i postępowań — bronię Twojej wersji wydarzeń.</p>
                 </article>
-                <article class="feature">
-                    <div class="feature-icon">🧨</div>
-                    <h3>Pełna wolność</h3>
-                    <p>TNT, grief, kradzież, trap — wszystko dozwolone. Liczy się tylko to, czy wytrzymasz.</p>
+                <article class="service">
+                    <div class="service-icon">📋</div>
+                    <h3>Porada prawna</h3>
+                    <p>Omówimy sprawę przed wejściem do sądu — co mówić, czego unikać, jak się przygotować.</p>
                 </article>
-                <article class="feature">
-                    <div class="feature-icon">🚫</div>
-                    <h3>Zero claimów</h3>
-                    <p>Żadnych regionów ani ochrony bazy. Twoja budowla istnieje, dopóki ktoś ją nie zniszczy.</p>
-                </article>
-                <article class="feature">
-                    <div class="feature-icon">💀</div>
-                    <h3>Hardcore vibe</h3>
-                    <p>Logujesz się na własne ryzyko. Stracisz eq? To część anarchii — wracaj silniejszy.</p>
-                </article>
-                <article class="feature">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Otwarty świat</h3>
-                    <p>Eksploruj, farm, buduj fort — albo poluj na graczy z lepszym wyposażeniem.</p>
-                </article>
-                <article class="feature">
-                    <div class="feature-icon">🔥</div>
-                    <h3>Cywilizacja</h3>
-                    <p>Serwer kolegi — mała ekipa, duża energia. Wbijaj i pokaż, kto tu rządzi.</p>
+                <article class="service">
+                    <div class="service-icon">🤝</div>
+                    <h3>Negocjacje</h3>
+                    <p>Pomogę wynegocjować ugodę lub rozwiązanie bez pełnego procesu, jeśli to możliwe.</p>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="section" id="dolacz" style="background: var(--bg-2);">
+    <section class="section" id="jak" style="background: var(--bg-2);">
         <div class="container">
             <div class="section-head">
-                <h2>Jak dołączyć?</h2>
-                <p>Skopiuj IP, odpal Minecraft Java i wjedź na serwer.</p>
+                <h2>Jak umówić konsultację?</h2>
+                <p>Cały kontakt odbywa się przez Discord — otwórz ticket i opisz sprawę.</p>
             </div>
             <div class="steps">
                 <div class="step">
                     <div class="step-num">1</div>
-                    <h3>Minecraft Java</h3>
-                    <p>Uruchom Minecraft Java w wersji <strong>1.21.4</strong>.</p>
+                    <h3>Wejdź na Discord</h3>
+                    <p>Kliknij „Umów konsultację” — przeniesie Cię na serwer <strong>🇵🇱Polskie RP⚪🔴</strong>.</p>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
-                    <h3>Dodaj serwer</h3>
-                    <p>Multiplayer → Dodaj serwer → wklej:<br><code>CYWILIZACJA-AkhQ.aternos.me:27807</code></p>
+                    <h3>Otwórz ticket</h3>
+                    <p>W ticketcie podaj <strong>swój nick z Roblox</strong> i opisz sprawę — odpowiem jako damiankalek123.</p>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
-                    <h3>Wbijaj!</h3>
-                    <p>Serwer musi być włączony na Aternos. Jak nie działa — poczekaj i odśwież listę serwerów.</p>
+                    <h3>Umów się w grze</h3>
+                    <p>Ustalamy termin na Emergency Hamburg. Opłata: <strong>500$</strong> w grze za pełną reprezentację.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="kontakt">
         <div class="container">
-            <div class="cta-banner">
-                <div>
-                    <h2>Gotowy na anarchię?</h2>
-                    <p>Skopiuj IP, dołącz do gry i pokaż, że dasz radę w FFA. Bez reguł — tylko skill.</p>
-                </div>
-                <button type="button" class="btn btn-primary" id="copyIp2">Kopiuj IP serwera</button>
+            <div class="cta-block">
+                <h2>Potrzebujesz adwokata?</h2>
+                <p>Za 500$ na Emergency Hamburg będę Twoim adwokatem. Kliknij poniżej, wejdź na Discord, otwórz ticket — odpiszę jako <strong>damiankalek123</strong> i umówimy konsultację.</p>
+                <a href="https://discord.gg/7cSy8CDt9N" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Umów konsultację na Discordzie</a>
             </div>
         </div>
     </section>
@@ -177,10 +138,10 @@
     <footer class="footer">
         <div class="container">
             <a href="index.html" class="logo">
-                <span class="logo-icon">⚔</span>
-                CYWILIZACJA
+                <span class="logo-icon">⚖</span>
+                damiankalek123 · EH
             </a>
-            <p>&copy; 2026 Cywilizacja — nie jest powiązany z Mojang AB.</p>
+            <p>Kancelaria RP na Emergency Hamburg (Roblox) — nie jest powiązana z twórcami gry.</p>
         </div>
     </footer>
 
@@ -191,22 +152,6 @@
         mobileMenu?.querySelectorAll('a').forEach((a) => {
             a.addEventListener('click', () => mobileMenu.classList.remove('open'));
         });
-
-        const ip = 'CYWILIZACJA-AkhQ.aternos.me:27807';
-
-        async function copyIp(btn, okText) {
-            try {
-                await navigator.clipboard.writeText(ip);
-                const prev = btn.textContent;
-                btn.textContent = okText;
-                setTimeout(() => { btn.textContent = prev; }, 1500);
-            } catch {
-                btn.textContent = 'Zaznacz IP ręcznie';
-            }
-        }
-
-        document.getElementById('copyIp')?.addEventListener('click', (e) => copyIp(e.target, 'Skopiowano!'));
-        document.getElementById('copyIp2')?.addEventListener('click', (e) => copyIp(e.target, 'Skopiowano!'));
     </script>
 </body>
 </html>
